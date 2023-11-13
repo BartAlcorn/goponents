@@ -5,7 +5,7 @@ import (
 
 	"github.com/redis/go-redis/v9"
 
-	"github.com/bartalcorn/goponents/application"
+	"github.com/bartalcorn/goponents/pkg/application"
 )
 
 func init() {

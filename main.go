@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/bartalcorn/goponents/application"
+	"github.com/bartalcorn/goponents/pkg/application"
 )
 
 func main() {

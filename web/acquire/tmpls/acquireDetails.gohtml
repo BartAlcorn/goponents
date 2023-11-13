@@ -1,0 +1,33 @@
+<div>
+  <h1>No Title</h1>
+  <div class="grid grid-cols-2 gap-2">
+    <div><p class="text-sm prose">Status:</p></div>
+    <div class="flex">
+      {{template "status-icons"}} &nbsp; {{ .Asset.Status.Type}}
+    </div>
+    {{range $codes := .Asset.Status.Codes}}
+    <div><p class="text-sm prose">Code:</p></div>
+    <div>{{ $codes.Code }}</div>
+    <div><p class="text-sm prose">Detail:</p></div>
+    <div>{{ $codes.Detail }}</div>
+    {{ end }}
+    <div><p class="text-sm prose">Type:</p></div>
+    <div>{{ .Asset.Type}}</div>
+    <div><p class="text-sm prose">EventSource:</p></div>
+    <div>{{ .Asset.EventSource}}</div>
+    <div>
+      <p class="text-sm prose">CreatedAt:</p>
+    </div>
+    <div>{{ .Audit.CreatedAt}}</div>
+    <div>
+      <p class="text-sm prose">UpdatedAt:</p>
+    </div>
+    <div>{{ .Audit.UpdatedAt}}</div>
+
+    <div>
+      <p class="text-sm prose">ManifestId:</p>
+    </div>
+    <div>{{ .Asset.Details.ManifestID}}</div>
+
+  </div>
+</div>

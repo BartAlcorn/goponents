@@ -1,0 +1,21 @@
+{{define "themer"}}
+<div id="themer" class="dropdown dropdown-end">
+  <label tabindex="0" class="btn m-1">Theme</label>
+  <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 border rounded-box w-52">
+    {{range $theme := .Themes}}
+    <li>
+      <a
+        hx-get="/state/theme/{{$theme}}"
+        hx-target="#theme-current"
+        hx-swap="innerHTML"
+        hx-trigger="click"
+        data-set-theme="{{$theme}}"
+        class="themer-option {{if eq $.Theme $theme}}active{{end}}"
+        _="on click remove .active from .themer-option on click add .active"
+        >{{$theme}}</a
+      >
+    </li>
+    {{end}}
+  </ul>
+</div>
+{{ end }}

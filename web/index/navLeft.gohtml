@@ -1,0 +1,21 @@
+{{define "nav-left"}}
+<div class="min-h-screen border-r pt-2">
+  <div class="grid pl-2 pr-2">
+  {{range $module := .Modules}}
+  <button
+    class="btn btn-Left-Nav btn-sm {{if eq $.Module $module.Name}}btn-primary btn-outline{{else}}btn-ghost{{end}} mt-4"
+    hx-get="/{{$module.Name}}/"
+    hx-target="#main"
+    hx-swap="innerHTML"
+    hx-trigger="click"
+    _="on click remove .btn-primary .btn-outline from .btn-Left-Nav
+      on click add .btn-ghost to .btn-Left-Nav
+      on click remove .btn-ghost from me
+      on click add .btn-primary .btn-outline to me"
+  >
+    {{$module.Name}}
+  </button>
+  {{end}}
+  </div>
+</div>
+{{ end }}

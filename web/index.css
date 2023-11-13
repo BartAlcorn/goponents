@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  color: rgb(194, 54, 54);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.deleteSVG {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5px;
+  stroke: #888 !important;
+}
+
+.deleteSVG:hover {
+  stroke-width: 2px;
+  stroke: #f00 !important;
+}
+
+.fader {
+  opacity: 0 !important;
+  display: block;
+}

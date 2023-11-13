@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html id="html-main" data-theme="{{.Theme}}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>GOponents</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+    <link
+      href="static/index.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    {{template "navbar" .}}
+    <div id="main-body" class="grid grid-cols-12 gap-1">
+      <div id="nav-left" class="col-span-1">
+        {{template "nav-left" .}}
+      </div>
+      <div class="col-span-11 p-2">
+        <div id="main" hx-get="/{{.Module}}/" hx-trigger="load" class="flex flex-grow">
+          {{template "tech"}}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

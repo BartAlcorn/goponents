@@ -1,0 +1,24 @@
+{{define "todos-form"}}
+<form
+  class="mb-8 flex justify-between items-end mt-4"
+  hx-post="/todos/"
+  hx-target="#todos-tbody"
+  hx-swap="afterend"
+  _="on click log 'clicked' on htmx:afterRequest reset() me"
+>
+  <div class="form-control w-full max-w-xs">
+    <input
+      type="text"
+      placeholder="New Task"
+      name="task"
+      class="input input-bordered w-full max-w-xs"
+    />
+  </div>
+  <button
+    class="btn btn-success ml-4"
+    type="submit"
+  >
+    Save
+  </button>
+</form>
+{{ end }}

@@ -10,9 +10,9 @@ import (
 )
 
 type AppConfig struct {
-	router http.Handler
-	rdb    *redis.Client
-	config Config
+	router  http.Handler
+	RedisDB *redis.Client
+	config  Config
 }
 
 var App *AppConfig
@@ -20,7 +20,7 @@ var App *AppConfig
 func init() {
 	config := LoadConfig()
 	App = &AppConfig{
-		rdb: redis.NewClient(&redis.Options{
+		RedisDB: redis.NewClient(&redis.Options{
 			Addr: config.RedisAddress,
 		}),
 		config: config,
@@ -36,13 +36,13 @@ func (a *AppConfig) Start(ctx context.Context) error {
 	}
 	fmt.Println("Starting on PORT", a.config.ServerPort)
 
-	err := a.rdb.Ping(ctx).Err()
+	err := a.RedisDB.Ping(ctx).Err()
 	if err != nil {
 		return fmt.Errorf("failed to connect to redis: %w", err)
 	}
 
 	defer func() {
-		if err := a.rdb.Close(); err != nil {
+		if err := a.RedisDB.Close(); err != nil {
 			fmt.Println("failed to close redis", err)
 		}
 	}()

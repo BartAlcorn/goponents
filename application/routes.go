@@ -77,7 +77,7 @@ func (a *AppConfig) loadSSERoutes(router chi.Router) {
 func (a *AppConfig) loadOrderRoutes(router chi.Router) {
 	orderHandler := &orders.OrderHandler{
 		Repo: &orders.RedisRepo{
-			Client: a.rdb,
+			Client: a.RedisDB,
 		},
 	}
 

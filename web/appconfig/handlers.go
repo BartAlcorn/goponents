@@ -15,8 +15,8 @@ func Read(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// if not HTMX, return JSON
-	isHMTX := r.Header.Get("HX-Request")
-	if isHMTX != "true" {
+	isHTMX := r.Header.Get("HX-Request")
+	if isHTMX != "true" {
 		res, err := json.Marshal(items)
 		if err != nil {
 			fmt.Println("failed to marshal:", err)

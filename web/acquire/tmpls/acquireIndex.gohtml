@@ -1,13 +1,26 @@
-  <div id="acquire-details">
-    <button
-      hx-get="/acquire/a5c3e3ca-0c3f-4368-81b3-d7fab4413a14"
-      hx-target="#acquire-details"
+  <div class="w-full grid grid-cols-4 gap-4">
+    <div
+      hx-get="/acquire/details/a5c3e3ca-0c3f-4368-81b3-d7fab4413a14"
       hx-swap="innerHTML"
-      class="btn"
-    >
-      show in place
-    </button>
+      hx-trigger="load"
+    ></div>
+
+    <div
+      id="acquire_modalbtn"
+      hx-get="/acquire/modalbtn"
+      hx-trigger="load"
+    ></div>
+
+    <div id="acquire-details">
+      <button
+        hx-get="/acquire/a5c3e3ca-0c3f-4368-81b3-d7fab4413a14"
+        hx-target="#acquire-details"
+        hx-swap="innerHTML"
+        class="btn"
+        
+      >
+        show in place
+      </button>
+    </div>
   </div>
 
-<div id="acquire_modalbtn" hx-get="/acquire/modalbtn" hx-trigger="load">
-</div>

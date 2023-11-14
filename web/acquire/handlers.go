@@ -36,6 +36,37 @@ func ModalBtn(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func StatusDetails(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("web/acquire/tmpls/acquireStatusIcon.gohtml", "web/acquire/tmpls/statusicons.gohtml")
+	if err != nil {
+		fmt.Println("error parsing gohtml", err)
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+	err = t.Execute(w, nil)
+	if err != nil {
+		fmt.Println("error executing", err)
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+}
+
+func BriefDetails(w http.ResponseWriter, r *http.Request) {
+	item, err := Find(chi.URLParam(r, "id"))
+	if err != nil {
+		fmt.Println("error getting all", err)
+	}
+
+	t, err := template.ParseFiles("web/acquire/tmpls/acquireBriefDetails.gohtml", "web/acquire/tmpls/statusicons.gohtml")
+	if err != nil {
+		fmt.Println("error parsing gohtml", err)
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+	err = t.Execute(w, item)
+	if err != nil {
+		fmt.Println("error executing", err)
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+}
+
 // Read calls the GetAll func
 func Read(w http.ResponseWriter, r *http.Request) {
 	item, err := Find(chi.URLParam(r, "id"))
@@ -44,8 +75,8 @@ func Read(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// if not HTMX, return JSON
-	isHMTX := r.Header.Get("HX-Request")
-	if isHMTX != "true" {
+	isHTMX := r.Header.Get("HX-Request")
+	if isHTMX != "true" {
 		res, err := json.Marshal(item)
 		if err != nil {
 			fmt.Println("failed to marshal:", err)
@@ -62,7 +93,7 @@ func Read(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// else return HTMX
-	t, err := template.ParseGlob("web/acquire/tmpls/*.gohtml")
+	t, err := template.ParseFiles("web/acquire/tmpls/acquireDetails.gohtml", "web/acquire/tmpls/statusicons.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

@@ -46,6 +46,8 @@ func (a *AppConfig) loadHomeRoutes(router chi.Router) {
 func (a *AppConfig) loadAcquireRoutes(router chi.Router) {
 	router.Get("/", acquire.Index)
 	router.Get("/{id}", acquire.Read)
+	router.Get("/brief/{id}", acquire.BriefDetails)
+	router.Get("/details/{id}", acquire.StatusDetails)
 	router.Get("/modalbtn", acquire.ModalBtn)
 }
 

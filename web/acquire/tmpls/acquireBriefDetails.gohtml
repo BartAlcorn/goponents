@@ -1,0 +1,20 @@
+<div class="stat shadow">
+  <h2>
+    <div>
+      <p class="text-sm prose">Status:</p>
+    </div>
+    <div class="flex">
+      {{ .Asset.Status.Type}}
+    </div>
+  </h2>
+  {{range $codes := .Asset.Status.Codes}}
+  <div>
+    <p class="text-sm prose">Code:</p>
+  </div>
+  <div>{{ $codes.Code }}</div>
+  <div>
+    <p class="text-sm prose">Detail:</p>
+  </div>
+  <div>{{ $codes.Detail }}</div>
+  {{ end }}
+</div>

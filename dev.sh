@@ -1,7 +1,7 @@
 #!/usr/local/bin/zsh
 echo "starting air" &
 air -c ./.air.toml &
-npx tailwindcss -i ./web/index.css -o ./static/index.css --watch &
+npx tailwindcss -i ./web/index.css -o ./static/goponents.css --watch &
 # npx browser-sync start \
 #   --files 'web/**/*.gohtml, static/**/*.css' \
 #   --port 8080 \

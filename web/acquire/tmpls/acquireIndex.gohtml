@@ -25,12 +25,12 @@
       hx-swap="innerHTML"
       hx-trigger="click"
       class="link link-hover"
-      _="on click log 'clicked on link' then transition #acquire-details-in-place's opacity to 1 over 0.4 seconds"
+      _="on click transition #acquire-details-in-place's opacity to 1 over 0.4 seconds"
     >
       New CNN Newsroom Live [CNNi] Weekday Today 12p ET/PT
     </a>
     <div
-      _="on click log 'clicked' then transition #acquire-details-in-place's opacity to 0 over 0.4 seconds then remove #acquire-details-in-place's innerHTML"
+      _="on click transition #acquire-details-in-place's opacity to 0 over 0.4 seconds then remove #acquire-details-in-place's innerHTML"
     >
       <div id="acquire-details-in-place"></div>
     </div>

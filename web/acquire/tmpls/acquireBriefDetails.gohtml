@@ -1,20 +1,40 @@
-<div class="stat shadow">
-  <h2>
-    <div>
-      <p class="text-sm prose">Status:</p>
+<div
+  class="stat shadow"
+  style="font-size: 80%"
+  _="on click log 'click' then transition opacity to 0 over 0.4 seconds then remove me"
+>
+  <div class="flex justify-end" style="border-bottom: 1px solid #ddd;margin-bottom: 8px;">
+    <a
+      class="link link-hover"
+      style="color: #888;font-size: 80%"
+      href="https://uat.disco.wbdapps.com/views/assets/keyword/{{ .ID}}?detailOpen=true"
+      target="_blank"
+      >view in DiSCO</a
+    >
+  </div>
+  <grid class="grid grid-cols-3 gap-0">
+    
+    <div style="margin-left: -8;">
+      <p class="text-xs prose">Status:</p>
     </div>
-    <div class="flex">
+    <div class="col-span-2" style="margin-left: -48;">
       {{ .Asset.Status.Type}}
     </div>
-  </h2>
-  {{range $codes := .Asset.Status.Codes}}
-  <div>
-    <p class="text-sm prose">Code:</p>
-  </div>
-  <div>{{ $codes.Code }}</div>
-  <div>
-    <p class="text-sm prose">Detail:</p>
-  </div>
-  <div>{{ $codes.Detail }}</div>
-  {{ end }}
+
+    {{range $codes := .Asset.Status.Codes}}
+    <div style="margin-left: -8;">
+      <p class="text-xs prose">Code:</p>
+    </div>
+    <div class="col-span-2" style="margin-left: -48;">{{ $codes.Code }}</div>
+
+    <div style="margin-left: -8;">
+      <p class="text-xs prose">Detail:</p>
+    </div>
+    <div class="col-span-2" style="margin-left: -48;">{{ $codes.Detail }}</div>
+    {{ end }}
+    <div style="margin-left: -8;">
+      <p class="text-xs prose">Date:</p>
+    </div>
+    <div class="col-span-2" style="margin-left: -48;">{{ .Audit.CreatedAt }}</div>
+  </grid>
 </div>

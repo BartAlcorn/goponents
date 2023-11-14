@@ -1,7 +1,7 @@
-<div>
-  <h1>No Title</h1>
+<div class="p-8" style="opacity: 0 !important;"  _="on load transition my opacity to 1 over 0.4 seconds">
+  <div class="prose prose.lg" style="border-bottom: 1px solid #ddd;margin-bottom: 8px;">{{ .Title}}</div>
   <div class="grid grid-cols-2 gap-2">
-    <div><p class="text-sm prose">Status:</p></div>
+    <div><p class="text-sm prose mb-2">Status:</p></div>
     <div class="flex">
       {{template "status-icons"}} &nbsp; {{ .Asset.Status.Type}}
     </div>

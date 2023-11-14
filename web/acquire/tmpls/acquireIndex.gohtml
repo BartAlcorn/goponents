@@ -1,26 +1,38 @@
-  <div class="w-full grid grid-cols-4 gap-4">
+<div class="w-full flex">
+  <div class="flex flex-col flex-auto w-1/4">
+    <div style="margin-bottom: 24">A gizmo as a status icon</div>
     <div
-      hx-get="/acquire/details/a5c3e3ca-0c3f-4368-81b3-d7fab4413a14"
+      hx-get="/acquire/details/disco-qa-9602788d-a555555-43-f2345675e-94-test11"
       hx-swap="innerHTML"
       hx-trigger="load"
     ></div>
+  </div>
 
+  <div class="flex flex-col flex-auto w-1/4">
+    <div style="margin-bottom: 24">A gizmo as a modal</div>
     <div
       id="acquire_modalbtn"
       hx-get="/acquire/modalbtn"
       hx-trigger="load"
     ></div>
-
-    <div id="acquire-details">
-      <button
-        hx-get="/acquire/a5c3e3ca-0c3f-4368-81b3-d7fab4413a14"
-        hx-target="#acquire-details"
-        hx-swap="innerHTML"
-        class="btn"
-        
-      >
-        show in place
-      </button>
-    </div>
   </div>
 
+  <div class="flex flex-col flex-auto w-1/2">
+    <div style="margin-bottom: 24">A gizmo as text link</div>
+    <a
+      hx-get="/acquire/disco-qa-9602788d-a555555-43-f2345675e-94-test11"
+      hx-target="#acquire-details-in-place"
+      hx-swap="innerHTML"
+      hx-trigger="click"
+      class="link link-hover"
+      _="on click log 'clicked on link' then transition #acquire-details-in-place's opacity to 1 over 0.4 seconds"
+    >
+      New CNN Newsroom Live [CNNi] Weekday Today 12p ET/PT
+    </a>
+    <div
+      _="on click log 'clicked' then transition #acquire-details-in-place's opacity to 0 over 0.4 seconds then remove #acquire-details-in-place's innerHTML"
+    >
+      <div id="acquire-details-in-place"></div>
+    </div>
+  </div>
+</div>

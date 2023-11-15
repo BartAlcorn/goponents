@@ -8,12 +8,12 @@ import (
 	"github.com/go-chi/cors"
 
 	acquire "github.com/bartalcorn/goponents/pkg/acquire"
+	appconfig "github.com/bartalcorn/goponents/pkg/appconfig"
 	orders "github.com/bartalcorn/goponents/pkg/orders"
-	appconfig "github.com/bartalcorn/goponents/web/appconfig"
+	todos "github.com/bartalcorn/goponents/pkg/todos/handlers"
 	home "github.com/bartalcorn/goponents/web/home"
 	idx "github.com/bartalcorn/goponents/web/index"
 	state "github.com/bartalcorn/goponents/web/state"
-	todos "github.com/bartalcorn/goponents/web/todos/handlers"
 )
 
 func (a *AppConfig) loadRoutes() {

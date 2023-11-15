@@ -11,7 +11,7 @@ import (
 
 // Read calls the GetAll func
 func Index(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseGlob("web/acquire/tmpls/acquireIndex.gohtml")
+	t, err := template.ParseGlob("pkg/acquire/tmpls/acquireIndex.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -24,7 +24,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func ModalBtn(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseGlob("web/acquire/tmpls/acquireModalDetails.gohtml")
+	t, err := template.ParseGlob("pkg/acquire/tmpls/acquireModalDetails.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -37,7 +37,7 @@ func ModalBtn(w http.ResponseWriter, r *http.Request) {
 }
 
 func StatusDetails(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("web/acquire/tmpls/acquireStatusIcon.gohtml", "web/acquire/tmpls/statusicons.gohtml")
+	t, err := template.ParseFiles("pkg/acquire/tmpls/acquireStatusIcon.gohtml", "pkg/acquire/tmpls/statusicons.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -57,7 +57,7 @@ func BriefDetails(w http.ResponseWriter, r *http.Request) {
 
 	isHTMX := r.Header.Get("HX-Request")
 	if isHTMX == "true" {
-		t, err := template.ParseFiles("web/acquire/tmpls/acquireBriefDetails.gohtml", "web/acquire/tmpls/statusicons.gohtml", "web/acquire/tmpls/discologo.gohtml")
+		t, err := template.ParseFiles("pkg/acquire/tmpls/acquireBriefDetails.gohtml", "pkg/acquire/tmpls/statusicons.gohtml", "pkg/acquire/tmpls/discologo.gohtml")
 		if err != nil {
 			fmt.Println("error parsing gohtml", err)
 			w.WriteHeader(http.StatusInternalServerError)
@@ -113,7 +113,7 @@ func Read(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// else return HTMX
-	t, err := template.ParseFiles("web/acquire/tmpls/acquireDetails.gohtml", "web/acquire/tmpls/statusicons.gohtml")
+	t, err := template.ParseFiles("pkg/acquire/tmpls/acquireDetails.gohtml", "pkg/acquire/tmpls/statusicons.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

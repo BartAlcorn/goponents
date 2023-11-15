@@ -7,8 +7,8 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 
+	acquire "github.com/bartalcorn/goponents/pkg/acquire"
 	orders "github.com/bartalcorn/goponents/pkg/orders"
-	acquire "github.com/bartalcorn/goponents/web/acquire"
 	appconfig "github.com/bartalcorn/goponents/web/appconfig"
 	home "github.com/bartalcorn/goponents/web/home"
 	idx "github.com/bartalcorn/goponents/web/index"

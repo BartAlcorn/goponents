@@ -14,7 +14,7 @@ func main() {
 	defer cancel()
 
 	// tailo.Watch(
-	// 	tailo.UseInputPath("web/index.css"),
+	// 	tailo.UseInputPath("pkg/index.css"),
 	// 	tailo.UseConfigPath("tailwind.config.js"),
 	// 	tailo.UseOutputPath("static/index.css"),
 	// )

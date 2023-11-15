@@ -10,10 +10,10 @@ import (
 	acquire "github.com/bartalcorn/goponents/pkg/acquire"
 	appconfig "github.com/bartalcorn/goponents/pkg/appconfig"
 	home "github.com/bartalcorn/goponents/pkg/home"
+	idx "github.com/bartalcorn/goponents/pkg/index"
 	orders "github.com/bartalcorn/goponents/pkg/orders"
 	todos "github.com/bartalcorn/goponents/pkg/todos/handlers"
 	state "github.com/bartalcorn/goponents/pkg/webstate"
-	idx "github.com/bartalcorn/goponents/web/index"
 )
 
 func (a *AppConfig) loadRoutes() {

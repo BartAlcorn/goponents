@@ -8,11 +8,11 @@ import (
 	web "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
-func Index(w http.ResponseWriter, r *http.Request) {
+func ServerSentEvents(w http.ResponseWriter, r *http.Request) {
 
 	state := web.State
 
-	t, err := template.ParseGlob("web/index/*.gohtml")
+	t, err := template.ParseFiles("pkg/index/sse.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

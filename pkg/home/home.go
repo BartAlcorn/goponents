@@ -12,7 +12,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 	web.State.Module = "home"
 
-	t, err := template.ParseFiles("pkg/home/home.gohtml", "web/index/tech.gohtml", "web/index/why.gohtml", "web/index/stack.gohtml")
+	t, err := template.ParseFiles("pkg/home/home.gohtml", "pkg/index/tech.gohtml", "pkg/index/why.gohtml", "pkg/index/stack.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

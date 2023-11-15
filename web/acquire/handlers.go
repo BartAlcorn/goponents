@@ -70,16 +70,16 @@ func BriefDetails(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// jsn := fmt.Sprintf(
-	// 	"{\"status\": \"%s\", \"code\": \"%s\", \"detail\": \"%s\", \"date\": \"%s\"}",
-	// 	item.Asset.Status.Type,
-	// 	item.Asset.Status.Codes[0].Code,
-	// 	item.Asset.Status.Codes[0].Detail,
-	// 	item.Audit.CreatedAt,
-	// )
+	jsn := fmt.Sprintf(
+		"{\"status\": \"%s\", \"code\": \"%s\", \"detail\": \"%s\", \"date\": \"%s\"}",
+		item.Asset.Status.Type,
+		item.Asset.Status.Codes[0].Code,
+		item.Asset.Status.Codes[0].Detail,
+		item.Audit.CreatedAt,
+	)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusAccepted)
-	_, err = w.Write(nil)
+	_, err = w.Write([]byte(jsn))
 	if err != nil {
 		fmt.Println("failed to write", err)
 	}

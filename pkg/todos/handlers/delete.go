@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"github.com/bartalcorn/goponents/web/todos"
+	"github.com/bartalcorn/goponents/pkg/todos"
 )
 
 // Delete remove a ToDo by ID

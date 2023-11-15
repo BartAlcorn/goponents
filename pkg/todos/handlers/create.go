@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/bartalcorn/goponents/web/todos"
+	"github.com/bartalcorn/goponents/pkg/todos"
 )
 
 // Create calls the Insert func
@@ -25,7 +25,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	t, err := template.ParseGlob("web/todos/tmpls/*.gohtml")
+	t, err := template.ParseGlob("pkg/todos/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

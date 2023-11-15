@@ -6,8 +6,8 @@ import (
 	"html/template"
 	"net/http"
 
+	"github.com/bartalcorn/goponents/pkg/todos"
 	web "github.com/bartalcorn/goponents/web/state"
-	"github.com/bartalcorn/goponents/web/todos"
 )
 
 // Read calls the GetAll func
@@ -37,7 +37,7 @@ func Read(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// else return HTMX
-	t, err := template.ParseFiles("web/todos/tmpls/todos-grid.gohtml", "web/todos/tmpls/todos-form.gohtml")
+	t, err := template.ParseFiles("pkg/todos/tmpls/todos-grid.gohtml", "pkg/todos/tmpls/todos-form.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

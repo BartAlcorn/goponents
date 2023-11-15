@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"github.com/bartalcorn/goponents/web/todos"
+	"github.com/bartalcorn/goponents/pkg/todos"
 )
 
 // Update calls the UpdateById func
@@ -37,7 +37,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	t, err := template.ParseGlob("web/todos/tmpls/*.gohtml")
+	t, err := template.ParseGlob("pkg/todos/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

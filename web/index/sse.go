@@ -5,7 +5,7 @@ import (
 	"html/template"
 	"net/http"
 
-	web "github.com/bartalcorn/goponents/web/state"
+	web "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 func ServerSentEvents(w http.ResponseWriter, r *http.Request) {

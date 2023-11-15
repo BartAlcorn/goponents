@@ -12,8 +12,8 @@ import (
 	home "github.com/bartalcorn/goponents/pkg/home"
 	orders "github.com/bartalcorn/goponents/pkg/orders"
 	todos "github.com/bartalcorn/goponents/pkg/todos/handlers"
+	state "github.com/bartalcorn/goponents/pkg/webstate"
 	idx "github.com/bartalcorn/goponents/web/index"
-	state "github.com/bartalcorn/goponents/web/state"
 )
 
 func (a *AppConfig) loadRoutes() {

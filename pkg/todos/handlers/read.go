@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/bartalcorn/goponents/pkg/todos"
-	web "github.com/bartalcorn/goponents/web/state"
+	web "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 // Read calls the GetAll func

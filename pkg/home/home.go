@@ -1,11 +1,11 @@
-package web
+package webstate
 
 import (
 	"fmt"
 	"html/template"
 	"net/http"
 
-	web "github.com/bartalcorn/goponents/web/state"
+	web "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {

@@ -1,4 +1,4 @@
-package handlers
+package todos
 
 import (
 	"encoding/json"
@@ -7,13 +7,11 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-
-	"github.com/bartalcorn/goponents/pkg/todos"
 )
 
 // Update calls the UpdateById func
 func Update(w http.ResponseWriter, r *http.Request) {
-	var body *todos.Todo
+	var body *Todo
 
 	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 		fmt.Println("error decoding body", err)
@@ -23,14 +21,14 @@ func Update(w http.ResponseWriter, r *http.Request) {
 
 	idParam := chi.URLParam(r, "id")
 
-	_, err := todos.UpdateById(idParam, body)
+	_, err := UpdateById(idParam, body)
 	if err != nil {
 		fmt.Println("error UpdateById", err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	item, err := todos.GetById(idParam)
+	item, err := GetById(idParam)
 	if err != nil {
 		fmt.Println("error GetById", err)
 		w.WriteHeader(http.StatusBadRequest)

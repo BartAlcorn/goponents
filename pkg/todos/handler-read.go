@@ -1,4 +1,4 @@
-package handlers
+package todos
 
 import (
 	"encoding/json"
@@ -6,14 +6,13 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/bartalcorn/goponents/pkg/todos"
 	web "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 // Read calls the GetAll func
 func Read(w http.ResponseWriter, r *http.Request) {
 	web.State.Module = "todos"
-	items, err := todos.GetAll()
+	items, err := GetAll()
 	if err != nil {
 		fmt.Println("error getting all", err)
 	}

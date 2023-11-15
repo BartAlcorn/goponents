@@ -1,4 +1,4 @@
-package handlers
+package todos
 
 import (
 	"fmt"
@@ -6,20 +6,18 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-
-	"github.com/bartalcorn/goponents/pkg/todos"
 )
 
 // Create calls the Insert func
 func Create(w http.ResponseWriter, r *http.Request) {
-	item := todos.Todo{
+	item := Todo{
 		ID:   uuid.NewString(),
 		Task: r.PostFormValue("task"),
 		// Done: body.Done,
 	}
 
 	// Call repo
-	err := todos.Insert(item)
+	err := Insert(item)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return

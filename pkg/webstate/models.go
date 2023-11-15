@@ -1,4 +1,4 @@
-package state
+package webstate
 
 type WebState struct {
 	Module  string

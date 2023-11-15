@@ -1,20 +1,18 @@
-package handlers
+package todos
 
 import (
 	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-
-	"github.com/bartalcorn/goponents/pkg/todos"
 )
 
 // Update calls the UpdateById func
 func ToggleDone(w http.ResponseWriter, r *http.Request) {
 	idParam := chi.URLParam(r, "id")
-	var item *todos.Todo
+	var item *Todo
 
-	item, err := todos.GetById(idParam)
+	item, err := GetById(idParam)
 	if err != nil {
 		fmt.Println("error GetById", err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -22,7 +20,7 @@ func ToggleDone(w http.ResponseWriter, r *http.Request) {
 	}
 	item.Done = !item.Done
 
-	_, err = todos.UpdateById(idParam, item)
+	_, err = UpdateById(idParam, item)
 	if err != nil {
 		fmt.Println("error UpdateById", err)
 		w.WriteHeader(http.StatusBadRequest)

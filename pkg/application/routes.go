@@ -12,8 +12,8 @@ import (
 	home "github.com/bartalcorn/goponents/pkg/home"
 	idx "github.com/bartalcorn/goponents/pkg/index"
 	orders "github.com/bartalcorn/goponents/pkg/orders"
-	todos "github.com/bartalcorn/goponents/pkg/todos/handlers"
-	state "github.com/bartalcorn/goponents/pkg/webstate"
+	todos "github.com/bartalcorn/goponents/pkg/todos"
+	webstate "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 func (a *AppConfig) loadRoutes() {
@@ -40,48 +40,15 @@ func (a *AppConfig) loadRoutes() {
 	router.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	// grouped routes
-	router.Route("/home/", a.loadHomeRoutes)
-	router.Route("/acquire", a.loadAcquireRoutes)
-	router.Route("/appconfigs", a.loadAppConfigRoutes)
+	router.Route("/home/", home.Routes)
+	router.Route("/acquire", acquire.Routes)
+	router.Route("/appconfigs", appconfig.Routes)
 	router.Route("/orders", a.loadOrderRoutes)
 	router.Route("/events", a.loadSSERoutes)
-	router.Route("/state", a.loadStateRoutes)
-	router.Route("/todos", a.loadToDosRoutes)
+	router.Route("/state", webstate.Routes)
+	router.Route("/todos", todos.Routes)
 
 	a.router = router
-}
-
-// Home
-func (a *AppConfig) loadHomeRoutes(router chi.Router) {
-	router.Get("/", home.Home)
-}
-
-// Acquire
-func (a *AppConfig) loadAcquireRoutes(router chi.Router) {
-	router.Get("/", acquire.Index)
-	router.Get("/{id}", acquire.Read)
-	router.Get("/brief/{id}", acquire.BriefDetails)
-	router.Get("/details/{id}", acquire.StatusDetails)
-	router.Get("/modalbtn", acquire.ModalBtn)
-}
-
-// AppConfigs
-func (a *AppConfig) loadAppConfigRoutes(router chi.Router) {
-	router.Get("/", appconfig.Read)
-}
-
-// ToDos
-func (a *AppConfig) loadToDosRoutes(router chi.Router) {
-	router.Post("/", todos.Create)
-	router.Get("/", todos.Read)
-	router.Put("/{id}", todos.Update)
-	router.Put("/{id}/done", todos.ToggleDone)
-	router.Delete("/{id}", todos.Delete)
-}
-
-// State
-func (a *AppConfig) loadStateRoutes(router chi.Router) {
-	router.Get("/theme/{theme}", state.ChangeState)
 }
 
 // Server Sent Events demonstrator

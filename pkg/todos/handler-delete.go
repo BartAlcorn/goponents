@@ -2,6 +2,7 @@ package todos
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -17,7 +18,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	fmt.Println("DELETE", idParam, item.DeletedCount)
+	log.Println("DELETIN", idParam, item.DeletedCount)
 	w.WriteHeader(204)
 
 }

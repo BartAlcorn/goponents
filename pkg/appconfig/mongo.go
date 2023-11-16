@@ -39,7 +39,7 @@ func Find() ([]map[string]interface{}, error) {
 	}
 
 	if err := cur.Err(); err != nil {
-		log.Fatal(err)
+		log.Println("ERROR: AppConfigs Cursor:", err)
 	}
 
 	// Close the cursor once finished

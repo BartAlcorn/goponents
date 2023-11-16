@@ -22,5 +22,5 @@ func BriefDetails(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
 
-	web.Responder(w, r, i, t)
+	web.Respond(w, r, i, t)
 }

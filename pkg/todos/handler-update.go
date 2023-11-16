@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"net/http"
 
+	"github.com/bartalcorn/goponents/pkg/web"
 	"github.com/go-chi/chi/v5"
 )
 
@@ -40,10 +41,6 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
-	err = t.Execute(w, item)
-	if err != nil {
-		fmt.Println("error executing", err)
-		w.WriteHeader(http.StatusInternalServerError)
-	}
 
+	web.Respond(w, r, item, t)
 }

@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 
+	"github.com/bartalcorn/goponents/pkg/web"
 	"github.com/google/uuid"
 )
 
@@ -13,10 +14,8 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	item := Todo{
 		ID:   uuid.NewString(),
 		Task: r.PostFormValue("task"),
-		// Done: body.Done,
 	}
 
-	// Call repo
 	err := Insert(item)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
@@ -28,10 +27,6 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
-	err = t.ExecuteTemplate(w, "todo-list-element", item)
-	if err != nil {
-		fmt.Println("error executing", err)
-		w.WriteHeader(http.StatusInternalServerError)
-	}
-	w.WriteHeader(http.StatusAccepted)
+
+	web.RespondWithTemplate(w, r, item, t, "todo-list-element")
 }

@@ -18,6 +18,10 @@ func Read(w http.ResponseWriter, r *http.Request) {
 	}
 
 	t, err := template.ParseFiles("pkg/acquire/tmpls/details.gohtml", "pkg/acquire/tmpls/statusicons.gohtml")
-	web.Responder(w, r, i, t)
+	if err != nil {
+		fmt.Println("error parsing gohtml", err)
+		w.WriteHeader(http.StatusInternalServerError)
+	}
 
+	web.Respond(w, r, i, t)
 }

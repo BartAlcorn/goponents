@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+
+	"github.com/bartalcorn/goponents/pkg/web"
 )
 
 func ModalBtn(w http.ResponseWriter, r *http.Request) {
@@ -12,9 +14,5 @@ func ModalBtn(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
-	err = t.Execute(w, nil)
-	if err != nil {
-		fmt.Println("error executing", err)
-		w.WriteHeader(http.StatusInternalServerError)
-	}
+	web.Respond(w, r, nil, t)
 }

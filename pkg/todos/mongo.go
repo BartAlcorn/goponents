@@ -2,7 +2,6 @@ package todos
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -16,7 +15,7 @@ func Insert(item Todo) error {
 		log.Println(err)
 		return err
 	}
-	fmt.Println("Inserted: TODO: ", item.Task)
+	log.Println("INSERTED: TODO: ", item.Task)
 
 	return nil
 }
@@ -28,7 +27,7 @@ func GetAll() ([]*Todo, error) {
 	// findOptions.SetLimit(2)
 	cur, err := Todos.Find(context.TODO(), bson.D{{}}, findOptions)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("ERROR: TODOS Find:", err)
 	}
 
 	// Iterate through the cursor
@@ -36,14 +35,14 @@ func GetAll() ([]*Todo, error) {
 		var elem Todo
 		err := cur.Decode(&elem)
 		if err != nil {
-			log.Fatal(err)
+			log.Println("ERROR: TODOS Cursor:", err)
 		}
 
 		results = append(results, &elem)
 	}
 
 	if err := cur.Err(); err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 
 	// Close the cursor once finished

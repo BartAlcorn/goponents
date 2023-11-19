@@ -4,7 +4,7 @@
   {{range $module := .Modules}}
   <button
     class="btn btn-Left-Nav btn-sm {{if eq $.Module $module.Name}}btn-primary btn-outline{{else}}btn-ghost{{end}} mt-4"
-    hx-get="/{{$module.Name}}/"
+    hx-get="/{{$module.Path}}/"
     hx-target="#main"
     hx-swap="innerHTML"
     hx-trigger="click"
@@ -13,7 +13,14 @@
       on click remove .btn-ghost from me
       on click add .btn-primary .btn-outline to me"
   >
-    {{$module.Name}}
+  <div class="w-full flex content-center">
+    <div class="btn-icon">
+      <img src="/static/svgs/{{$module.Icon}}.svg" style="height: 20px; stroke-width: 2.5;">
+    </div>
+    <div class="grow" style="margin-top:4px;width:100%;">
+      {{$module.Name}}
+    </div>
+  </div>
   </button>
   {{end}}
   </div>

@@ -1,0 +1,24 @@
+<div class="opacity-0 min-event-item status-{{.Status}}" _="on load transition my opacity to 1 over 0.4 seconds">
+  <h1>{{.Title}}</h1>
+  <div class="overflow-x-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Status</th>
+          <th>Started</th>
+        </tr>
+      </thead>
+      <tbody>
+  {{ range $h := .History}}
+        <tr>
+          <td>{{$h.Process}}</td>
+          <td>{{$h.Status}}</td>
+          <td>{{$h.Start | date "2006-01-02 15:05:06"}}</td>
+        </tr>
+  {{end}}
+      </tbody>
+    </table>
+  </div>
+</div>

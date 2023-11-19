@@ -7,6 +7,7 @@ type Asset struct {
 	Title   string    `json:"title"`
 	Status  string    `json:"Status"`
 	History []History `json:"history"`
+	Update  bool      `json:"update"`
 }
 
 type History struct {

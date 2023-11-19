@@ -1,0 +1,9 @@
+<div
+  id="min-event-posts"
+  hx-ext="sse" 
+  sse-connect="/min/events"
+  sse-swap="min-event-asset,min-event-update,min-event-close" 
+  hx-swap="beforeend" 
+  hx-target="#min-vsp-event-updates"
+  _="on load log 'sse running'">
+</div>

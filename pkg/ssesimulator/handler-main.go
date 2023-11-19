@@ -4,17 +4,18 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
-
-	"github.com/bartalcorn/goponents/pkg/web"
 )
 
 // Create calls the Insert func
 func ShowMain(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseGlob("pkg/ssesimulator/tmpls/simulator.gohtml")
+	t, err := template.ParseGlob("pkg/ssesimulator/tmpls/*.gohtml")
 	if err != nil {
-		fmt.Println("error parsing gohtml", err)
-		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Println("error template parsing handle_main", err)
 	}
 
-	web.Respond(w, r, nil, t)
+	err = t.Execute(w, nil)
+	if err != nil {
+		fmt.Println("error executing", err)
+		w.WriteHeader(http.StatusInternalServerError)
+	}
 }

@@ -1,26 +1,51 @@
 <div class="container mx-auto px-4">
   <div class="text-lg">Below is an example of <span style="font-weight:bold;">Server Sent Events</span>.</div>
-  <div class="text-md mb-16">This simulates the fictious Video Readying Process(VRP) within the equally fictious Streaming Service "<span style="font-weight:bold;">MIN</span>".</div>
-  <div class="text-md">This example grossly over simplifes the process of readying videos for playback to MIN's <span id="subscriber-count" style="font-weight:bold;">many</span> subscribers.</div>
-  <div class="m-2"> &nbsp; </div>
-  <div class="text-md">The movie titles are randomly taken from the IMDB top 30 list and are for demonsttation purposes only.</div>
-  <div class="m-2"> &nbsp; </div>
+  <div class="text-md mb-4">This simulates the fictious Video Readying Process(VRP) within the equally fictious Streaming Service "<span style="font-weight:bold;">MIN</span>".</div>
+  <div class="text-md mb-4">This example grossly over simplifes the process of readying videos for playback to MIN's <span id="subscriber-count" style="font-weight:bold;">many</span> subscribers.</div>
+  <div class="text-md mb-4">The movie titles are randomly taken from the IMDB top 30 list and are for demonsttation purposes only.</div>
 
-  <button class="btn btn-ghost" _="on click remove #min-event-posts">stop</button>
+  <button class="btn btn-ghost mb-6" hx-get="/min/start" hx-target="#min-event-poster" hx-swap="innerHTML">start</button>
 
-  <div 
-    id="min-event-posts"
-    hx-ext="sse"
-    sse-connect="/min/events"
-    sse-swap="min-event-update,min-event-close"
-    hx-swap="beforeend"
-    hx-target="#min-vsp-event-updates"
-    _="on load log 'starting' end "
-  >
+  <button 
+    class="btn btn-ghost mb-6" 
+    hx-get="/min/stop"
+    hx-target="#min-event-poster"
+    hx-swap="innerHTML"
+  >stop</button>
+
+  <div id="min-event-poster">
   </div>
-  <div id="min-vsp-event-updates" class="max-w-[50%]"></div>
+
+  <div class="flex">
+    <div id="min-vsp-event-updates" class="max-w-[50%]" style="max-height: 500px; overflow-x: auto;">
+    {{ block "assets" .}}
+      {{if .ID}}
+      <div id="asset-{{.ID}}" {{if .Update}}hx-swap-oob="true" {{ end }} 
+        hx-get="/min/details/{{.ID}}"
+        hx-target="#min-vsp-event-details"
+        hx-swap="innerHTML"
+        hx-trigger="click"
+        class="opacity-0 min-event-item status-{{.Status}}"
+          _="on load transition my opacity to 1 over 0.4 seconds">
+        <div class="w-full grid grid-cols-6" style="width : 100%;">
+          <div class="col-span-5">Title: {{.ID}}</div>
+          <div class="col-span-1">
+            <div class="grid grid-cols-2">
+              <div>Status: </div>
+              <div>{{template "statusicon" .}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span id="subscriber-count" style="font-weight:bold;" hx-swap-oob="true" hx-swap="innerHTML">42</span>
+      {{end}}
+    {{end}}
+    </div>
+    <div id="min-vsp-event-details" class="max-w-[50%]" style="padding-left: 24px;max-height: 500px; overflow-x: auto;">
+    </div>
+    </div>
 </div>
-<script type="text/hyperscript">
+<!-- <script type="text/hyperscript">
   on htmx:sseMessage log event.detail.type
-  on htmx:sseMessage if event.detail.type match "min-event-close" then log 'CLOSING'
-</script>
+  on htmx:sseMessage log event.detail.data
+</script> -->

@@ -2932,6 +2932,14 @@ html {
   margin-top: 1.5rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -2974,10 +2982,6 @@ html {
 
 .min-w-\[100\%\] {
   min-width: 100%;
-}
-
-.min-w-\[50\%\] {
-  min-width: 50%;
 }
 
 .max-w-\[50\%\] {
@@ -3063,6 +3067,11 @@ html {
 .bg-base-100 {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
+
+.bg-base-200 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b2) / var(--tw-bg-opacity));
 }
 
 .stroke-current {
@@ -3155,7 +3164,6 @@ h1 {
 }
 
 .min-event-item {
-  background-color: #88ff88;
   border: 1px solid #999;
   border-radius: 12px;
   padding: 12px;
@@ -3168,4 +3176,20 @@ h1 {
   margin-left: 4px;
   margin-right: -4px;
   width: 32px;
+}
+
+.status-pending {
+  background-color: #f7f2f2;
+}
+
+.status-processing {
+  background-color: #99cbf2;
+}
+
+.status-error {
+  background-color: #edcece;
+}
+
+.status-completed {
+  background-color: #c8f2c8;
 }

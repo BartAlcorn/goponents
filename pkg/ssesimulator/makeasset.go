@@ -15,7 +15,7 @@ func MakeAsset() Asset {
 	var a Asset
 	a.ID = uuid.NewString()
 	a.Title = FakeMovie()
-	a.Status = "completed"
+	a.Status = "pending"
 	a.History = append(a.History, h)
 	return a
 }

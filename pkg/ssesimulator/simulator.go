@@ -4,12 +4,13 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/labstack/gommon/color"
 )
 
 func Simulate(w http.ResponseWriter, r *http.Request) {
-	color.Println(color.Red("Simulate STARTED"))
+	color.Println(color.Yellow("Simulate Handler: started"))
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
 	w.Header().Set("Connection", "keep-alive")
@@ -21,19 +22,22 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	minEventCh := make(chan Asset)
+	updateCh := make(chan Asset)
 
 	// Create a context for handling client disconnection
-	_, cancel := context.WithCancel(r.Context())
+	ctx, cancel := context.WithCancel(r.Context())
 	defer cancel()
 
 	// Send data to the client
-	go generateUpdate(r.Context(), minEventCh)
+	go processAssets(ctx, flusher, w)
 
-	// Send event data to the client
-	for minevent := range minEventCh {
-		Assets = append(Assets, minevent)
-		event, err := formatServerSentEvent("min-event-update", minevent)
+	time.Sleep(1 * time.Second)
+	// generateUpdates
+	go generateUpdates(r.Context(), updateCh)
+	fmt.Println("starting updates")
+
+	for updateEvent := range updateCh {
+		event, err := formatUpdate("min-event-update", updateEvent)
 		if err != nil {
 			fmt.Println(err)
 			break
@@ -47,5 +51,7 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 
 		flusher.Flush()
 	}
+
+	color.Println(color.Red("Simulate Handler: ended"))
 
 }

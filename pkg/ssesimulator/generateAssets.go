@@ -1,32 +1,26 @@
 package ssesimulator
 
 import (
-	"context"
-	"fmt"
-	"time"
+	"github.com/labstack/gommon/color"
 )
 
-func generateAssets(ctx context.Context, minEventCh chan<- Asset) {
-	ticker := time.NewTicker(time.Second)
-	count := 0
+func generateAssets(addCh chan<- Asset) {
+	count := 8
+	color.Println(color.Green("generateAssets: started"))
 
-dataLoop:
-	for {
-		select {
-		case <-ctx.Done():
-			break dataLoop
-		case <-ticker.C:
-			minEventCh <- MakeAsset()
-			count += 1
-			if count > 3 {
-				break dataLoop
-			}
+	if len(Assets) > count {
+		color.Println(color.Yellow("generateAssets: resending"))
+		for _, a := range Assets {
+			addCh <- a
 		}
+		return
 	}
 
-	ticker.Stop()
+	for i := 0; i < count; i++ {
+		a := MakeAsset()
+		Assets = append(Assets, a)
+		addCh <- a
+	}
 
-	close(minEventCh)
-
-	fmt.Println("generateUpdate: Completed")
+	color.Println(color.Green("generateAssets: Completed"))
 }

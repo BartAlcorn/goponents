@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -18,10 +19,20 @@ var clients = make(map[string]*mongo.Client)
 var MgoRepo MongoRepo
 
 func init() {
-	mongoLocal := os.Getenv("MONGOLOCAL")
-	connectToMongo("local", mongoLocal)
-	mongoMax := os.Getenv("MONGOMAX")
-	connectToMongo("max", mongoMax)
+	mongos := os.Getenv("MONGOS")
+
+	if mongos == "" {
+		return
+	}
+
+	// this allows for multiple connect strings in a single environment variable
+	// [name]<connect string>,
+	parts := strings.Split(mongos, ",")
+	for _, v := range parts {
+		v = strings.TrimLeft(v, "[")
+		vp := strings.Split(v, "]")
+		connectToMongo(vp[0], vp[1])
+	}
 	MgoRepo.Clients = clients
 
 }

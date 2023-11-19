@@ -8,8 +8,6 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 
-	acquire "github.com/bartalcorn/goponents/pkg/acquire"
-	appconfig "github.com/bartalcorn/goponents/pkg/appconfig"
 	home "github.com/bartalcorn/goponents/pkg/home"
 	idx "github.com/bartalcorn/goponents/pkg/index"
 	orders "github.com/bartalcorn/goponents/pkg/orders"
@@ -46,8 +44,6 @@ func (a *AppConfig) loadRoutes() {
 
 	// grouped routes
 	router.Route("/home/", home.Routes)
-	router.Route("/acquire", acquire.Routes)
-	router.Route("/appconfigs", appconfig.Routes)
 	router.Route("/orders", a.loadOrderRoutes)
 	router.Route("/events", a.loadSSERoutes)
 	router.Route("/state", webstate.Routes)

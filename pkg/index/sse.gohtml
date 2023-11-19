@@ -1,6 +1,17 @@
+<script type="text/hyperscript">
+  eventsource recordUpdater from /sse/events
+      on message as json
+          log me
+      end
+  end
+</script>
 <div class="container mx-auto px-4">
   <div>Below is an example of Server Sent Events.</div>
   <div>The server is sending the time and a random name every two seconds.</div>
-  <h1 hx-ext="sse" sse-connect="/events" sse-swap="message" _="on change log 'PING'">SSE Test 2</h1>
+  <h1 
+    hx-ext="sse"
+    sse-connect="/sse/events"
+    sse-swap="message"
+    >SSE Test 2</h1>
 
 </div>

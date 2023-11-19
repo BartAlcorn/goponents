@@ -1,0 +1,12 @@
+{{define "status-pending-icon"}}
+<img src="/static/svgs/pending.svg" style="height: 24px; stroke-width: 4;">
+{{ end }}
+
+
+{{define "statusicon"}}
+  {{ if eq .Status "pending"}}
+    {{ template "status-pending-icon"}}
+  {{ else }}
+    {{ .Status }}
+  {{ end }}
+{{ end }}

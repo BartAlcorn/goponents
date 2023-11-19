@@ -3,6 +3,7 @@ package application
 import (
 	"net/http"
 
+	// sse "github.com/alexandrevicenzi/go-sse"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
@@ -12,6 +13,7 @@ import (
 	home "github.com/bartalcorn/goponents/pkg/home"
 	idx "github.com/bartalcorn/goponents/pkg/index"
 	orders "github.com/bartalcorn/goponents/pkg/orders"
+	"github.com/bartalcorn/goponents/pkg/ssesimulator"
 	todos "github.com/bartalcorn/goponents/pkg/todos"
 	webstate "github.com/bartalcorn/goponents/pkg/webstate"
 )
@@ -33,8 +35,11 @@ func (a *AppConfig) loadRoutes() {
 		MaxAge:           300, // Maximum value not ignored by any of major browsers
 	}))
 
+	// SSE Server
+	// s := sse.NewServer(nil)
+	// defer s.Shutdown()
+
 	router.Get("/", idx.Index)
-	router.Get("/sse/", idx.ServerSentEvents)
 
 	//handle static files like CSS and the few, but necessary JS files
 	router.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
@@ -47,13 +52,16 @@ func (a *AppConfig) loadRoutes() {
 	router.Route("/events", a.loadSSERoutes)
 	router.Route("/state", webstate.Routes)
 	router.Route("/todos", todos.Routes)
+	router.Route("/sse", a.loadSSERoutes)
+	router.Route("/min", ssesimulator.Routes)
 
 	a.router = router
 }
 
 // Server Sent Events demonstrator
 func (a *AppConfig) loadSSERoutes(router chi.Router) {
-	router.Get("/", SSESimulator)
+	router.Get("/", idx.ServerSentEvents)
+	router.Get("/events", SSESimulator)
 }
 
 // Orders (JSON return only! NOT HTMX enabled)

@@ -6,6 +6,8 @@ import (
 	"math/rand"
 	"net/http"
 	"time"
+
+	"github.com/labstack/gommon/color"
 )
 
 func SSESimulator(w http.ResponseWriter, r *http.Request) {
@@ -14,28 +16,55 @@ func SSESimulator(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Cache-Control", "no-cache")
 	w.Header().Set("Connection", "keep-alive")
 
-	names := []string{"Mike", "Bart", "Ben", "Jordan", "David"}
+	color.Println(color.Green("starting Simple SSE Simulation"))
 
-	// Create a channel to send data
-	minEventCh := make(chan string)
+	flusher, ok := w.(http.Flusher)
+	if !ok {
+		http.Error(w, "SSE not supported", http.StatusInternalServerError)
+		return
+	}
+
+	// Create a channel for data
+	simulateEventCh := make(chan string)
 
 	// Create a context for handling client disconnection
 	_, cancel := context.WithCancel(r.Context())
 	defer cancel()
 
-	// Send data to the client
-	go func() {
-		for data := range minEventCh {
-			idx := rand.Intn(len(names))
-			fmt.Fprintf(w, "data: %s by %s\n\n", data, names[idx])
-			w.(http.Flusher).Flush()
-		}
-	}()
+	// go routine for loop
+	go SSESimulatorLoop(r.Context(), simulateEventCh)
 
-	// Simulate sending data periodically
-	for {
-		minEventCh <- time.Now().Format(time.TimeOnly)
-		time.Sleep(2 * time.Second)
+	// for each event received
+	for simulateEvent := range simulateEventCh {
+		_, err := fmt.Fprint(w, simulateEvent)
+		if err != nil {
+			fmt.Println(err)
+			break
+		}
+		flusher.Flush()
 	}
 
+}
+
+func SSESimulatorLoop(ctx context.Context, simulateEventCh chan<- string) {
+	ticker := time.NewTicker(time.Second)
+	names := []string{"Mike", "Bart", "Ben", "Jordan", "David"}
+
+eventLoop:
+	for {
+		select {
+		case <-ctx.Done():
+			break eventLoop
+		case <-ticker.C:
+			idx := rand.Intn(len(names))
+			result := fmt.Sprintf("data: %s by %s\n\n", time.Now().Format(time.TimeOnly), names[idx])
+			simulateEventCh <- result
+		}
+	}
+
+	ticker.Stop()
+
+	close(simulateEventCh)
+
+	color.Println(color.Red("stopping Simple SSE Simulation"))
 }

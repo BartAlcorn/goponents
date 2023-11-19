@@ -2,8 +2,9 @@ package ssesimulator
 
 import (
 	"context"
-	"fmt"
 	"time"
+
+	"github.com/labstack/gommon/color"
 )
 
 func generateUpdate(ctx context.Context, minEventCh chan<- Asset) {
@@ -28,5 +29,6 @@ dataLoop:
 
 	close(minEventCh)
 
-	fmt.Println("generateUpdate: Completed")
+	color.Println(color.Yellow("generateUpdate: Completed"))
+
 }

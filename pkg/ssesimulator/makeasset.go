@@ -9,13 +9,13 @@ import (
 func MakeAsset() Asset {
 	var h History
 	h.Process = "Receiving"
-	h.Status = "Pending"
+	h.Status = "pending"
 	h.Start = time.Now()
 
 	var a Asset
 	a.ID = uuid.NewString()
 	a.Title = FakeMovie()
-	a.Status = "pending"
+	a.Status = "completed"
 	a.History = append(a.History, h)
 	return a
 }

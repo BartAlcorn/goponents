@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 h1 {
-  color: rgb(194, 54, 54);
+  color: #444;
   font-size: 24px;
   font-weight: 600;
 }

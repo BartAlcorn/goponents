@@ -1,0 +1,37 @@
+{{block "details" .}}
+<div
+  class="opacity-0 min-event-item status-{{.Status}}"
+  _="on load transition my opacity to 1 over 0.4 seconds"
+>
+  <div class="flex">
+    <h1>{{.Title}}</h1>
+    <div class="grid grid-cols-2 flex place-items-start" style="max-width: 120px; margin-top:4px; margin-left: 16px;;">
+      <div>Status:</div>
+      <div>{{template "statusicon" .}}</div>
+    </div>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Status</th>
+          <th>Started</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $h := .History}}
+        <tr>
+          <td>{{ $h.Process }}</td>
+          <td>{{ $h.Status }}</td>
+          <td>{{$h.Start | date "2006-01-02 15:05:06"}}</td>
+        </tr>
+        {{
+          end
+        }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{{ end }}

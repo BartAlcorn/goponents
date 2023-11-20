@@ -4,14 +4,13 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+
+	"github.com/Masterminds/sprig/v3"
 )
 
-// Create calls the Insert func
+// ShowMain handler the '/min/' GET route
 func ShowMain(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseGlob("pkg/ssesimulator/tmpls/*.gohtml")
-	if err != nil {
-		fmt.Println("error template parsing handle_main", err)
-	}
+	t, err := template.New("simulator.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/ssesimulator/tmpls/*.gohtml")
 
 	err = t.Execute(w, nil)
 	if err != nil {

@@ -10,12 +10,12 @@ import (
 )
 
 func HandleStart(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("pkg/ssesimulator/tmpls-partials/startsse.gohtml")
+	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/ssesimulator/tmpls/*.gohtml")
 	if err != nil {
-		fmt.Println("error template parsing HandleStart", err)
+		fmt.Println("error parsin template formatAsset", err)
 	}
 
-	err = t.Execute(w, nil)
+	err = t.ExecuteTemplate(w, "sseStart", nil)
 	if err != nil {
 		fmt.Println("error executing", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -23,12 +23,12 @@ func HandleStart(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleStop(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("pkg/ssesimulator/tmpls-partials/stopsse.gohtml")
+	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/ssesimulator/tmpls/*.gohtml")
 	if err != nil {
-		fmt.Println("error template parsing HandleStart", err)
+		fmt.Println("error parsin template formatAsset", err)
 	}
 
-	err = t.Execute(w, nil)
+	err = t.ExecuteTemplate(w, "sseStop", nil)
 	if err != nil {
 		fmt.Println("error executing", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -36,7 +36,7 @@ func HandleStop(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleDetails(w http.ResponseWriter, r *http.Request) {
-	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/ssesimulator/tmpls-partials/details.gohtml")
+	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/ssesimulator/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsin template formatAsset", err)
 	}
@@ -50,7 +50,7 @@ func HandleDetails(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	err = t.Execute(w, a)
+	err = t.ExecuteTemplate(w, "details", a)
 	if err != nil {
 		fmt.Println("error executing", err)
 		w.WriteHeader(http.StatusInternalServerError)

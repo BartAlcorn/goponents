@@ -16,11 +16,8 @@ This is demonstrated here in several ways. Theme and (current) Module have their
 
 ## TODOS
 
-* refactor `template`s, with better `block`s and `define`s
 * refactor `handler`s, need a few generic utils to reduce boilerplate
-* move `routes` into the `module`, make the modules more transportable between projects
 * add SQLlite repository demo
-* add actual SSE example (perhaps Stock Prices?)
 
 ## Installing and Running
 

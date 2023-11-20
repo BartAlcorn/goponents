@@ -18,7 +18,7 @@
         hx-swap="innerHTML"
         hx-trigger="click"
         class="opacity-0 min-event-item status-{{.Status}}"
-          _="on load transition my opacity to 1 over 0.4 seconds">
+          _="on load transition my opacity to 1 over 0.4 seconds{{if eq .Status "completed"}} then wait 3s transition my opacity to 0 over 0.4 seconds then transition my height to 0 over 0.4 seconds then remove me{{end}}">
         <div class="w-full grid grid-cols-6" style="width : 100%;">
           <div class="col-span-5">Title: {{.Title}}</div>
           <div class="col-span-1">

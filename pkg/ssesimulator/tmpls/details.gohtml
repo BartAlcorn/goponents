@@ -25,7 +25,7 @@
         <tr>
           <td>{{ $h.Process }}</td>
           <td>{{ $h.Status }}</td>
-          <td>{{$h.Start | date "2006-01-02 15:05:06"}}</td>
+          <td class="flex"><div>{{$h.Start | date "15:04:05"}}</div>&nbsp;<div>{{$h.Start | date "2006-01-02"}}</div></td>
         </tr>
         {{
           end

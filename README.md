@@ -30,24 +30,44 @@ Install using curl
 
 ``` zsh
 curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh
+# list remote versions available
+gobrew ls-remote
+# install the latest non-beta release (1.21.4 as of 2023-11-20)
+gobrew install 1.21.4
+```
+
+You will also need MongoDB and Redis. On macOs I recommend the following:
+
+``` zsh
+# install MongoDB community edition ( for local testing )
+brew tap mongodb/brew
+brew update
+brew install mongodb-community
+brew services start mongodb-community
+# install Redis
+brew install redis
+brew services start redis
 ```
 
 Install dependencies
 
 ``` zsh
-# install packages (tailwindcss, postcss, browser-sync, etc.)
+# install npm packages (tailwindcss, postcss, browser-sync, etc.)
+# yes, HTMX is mostly Javascript-less, but some development packages are needed
 npm install
 ```
 
 Then run the following from a terminal window:
 
 ``` zsh
-# run air, tailwind watcher and browser-sync concurrently
+# run air, tailwind watcher concurrently
 source ./dev.sh
 ```
 
+The site should now be available at [<http://localhost:3000>](http://localhost:3000)
+
 ## Datastores
 
-Both Redis and MonoDB are in use. This shows how to use multiples data repositories and how to abstract the datastore mechanisms away from the web handlers.
+Both Redis and MonoDB-Community are in use. This shows how to use multiples data repositories and how to abstract the datastore mechanisms away from the web handlers.
 
-Redis and MongoDB need to be installed, but that's not covered here.
+A SQLLite example is planned.

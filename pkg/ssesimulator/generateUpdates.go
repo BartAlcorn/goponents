@@ -5,14 +5,26 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/bartalcorn/excuses"
 	"github.com/labstack/gommon/color"
 )
 
 func generateHistory(status string, a Asset) Asset {
 	var h History
+	h.Process = tasks[rand.Intn(len(tasks))]
 	h.Status = status
 	h.Start = time.Now()
+	if status == "error" {
+		h.Description = excuses.Tech()
+	}
 	a.History = append(a.History, h)
+	a = generateElapsed(a)
+	return a
+}
+
+func generateElapsed(a Asset) Asset {
+	l := len(a.History) - 1
+	a.History[l].Elapsed = time.Since(a.History[l-1].Start)
 	return a
 }
 
@@ -33,6 +45,7 @@ dataLoop:
 			if len(Assets) < 1 {
 				break dataLoop
 			}
+			rand.Seed(time.Now().UnixNano())
 			l := len(Assets) - 1
 			if l < 0 {
 				color.Print(color.Red("index out of bounds"))
@@ -72,6 +85,11 @@ dataLoop:
 				}
 				Assets[r] = a
 				a.Update = true
+				l := len(a.History) - 1
+				a.Elapsed = a.History[l].Start.Sub(a.History[0].Start)
+				if a.ID == monitorID {
+					a.Monitor = a.ID
+				}
 				updateCh <- a
 			}
 		}

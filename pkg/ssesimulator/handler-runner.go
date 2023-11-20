@@ -42,6 +42,7 @@ func HandleDetails(w http.ResponseWriter, r *http.Request) {
 	}
 
 	idParam := chi.URLParam(r, "id")
+	monitorID = idParam
 
 	var a Asset
 	for _, v := range Assets {

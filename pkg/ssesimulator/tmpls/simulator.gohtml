@@ -30,10 +30,11 @@
         </div>
       </div>
       <span id="subscriber-count" style="font-weight:bold;" hx-swap-oob="true" hx-swap="innerHTML">{{ randInt 12 30 }}</span>
+      {{if eq .ID .Monitor}}{{template "details" .}}{{end}}
       {{end}}
     {{end}}
     </div>
-    <div id="min-vsp-event-details" class="max-w-[50%]" style="padding-left: 24px;max-height: 500px; overflow-x: auto;">
+    <div id="min-vsp-event-details" hx-ext="sse" sse-swap="min-event-detail-update" class="max-w-[50%]" style="padding-left: 24px;max-height: 500px; overflow-x: auto;">
     </div>
     </div>
 </div>

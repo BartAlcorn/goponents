@@ -9,14 +9,14 @@ import (
 	"github.com/Masterminds/sprig/v3"
 )
 
-func formatAsset(event string, data any) (string, error) {
+func formatDetails(event string, data any) (string, error) {
 	var tpl bytes.Buffer
 	t, err := template.New("simulator.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/ssesimulator/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsin template formatAsset", err)
 	}
 
-	err = t.ExecuteTemplate(&tpl, "assets", data)
+	err = t.ExecuteTemplate(&tpl, "details", data)
 	if err != nil {
 		fmt.Println("error executing", err)
 		// w.WriteHeader(http.StatusInternalServerError)

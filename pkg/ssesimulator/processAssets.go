@@ -13,7 +13,7 @@ func processAssets(ctx context.Context, flusher http.Flusher, w http.ResponseWri
 	go generateAssets(addCh)
 	// Send event data to the client
 	for addEvent := range addCh {
-		event, err := formatSseAsset("min-event-asset", addEvent)
+		event, err := formatAsset("min-event-asset", addEvent)
 		if err != nil {
 			fmt.Println(err)
 			break

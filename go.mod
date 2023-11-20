@@ -1,9 +1,10 @@
 module github.com/bartalcorn/goponents
 
-go 1.21
+go 1.21.4
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
+	github.com/bartalcorn/excuses v0.0.0-20231120171422-44f7cd217417
 	github.com/go-chi/chi/v5 v5.0.10
 	github.com/go-chi/cors v1.2.1
 	github.com/google/uuid v1.4.0

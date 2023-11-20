@@ -4,16 +4,8 @@
   <div class="text-md mb-4">This example grossly over simplifes the process of readying videos for playback to MIN's <span id="subscriber-count" style="font-weight:bold;">many</span> subscribers.</div>
   <div class="text-md mb-4">The movie titles are randomly taken from the IMDB top 30 list and are for demonsttation purposes only.</div>
 
-  <button class="btn btn-ghost mb-6" hx-get="/min/start" hx-target="#min-event-poster" hx-swap="innerHTML">start</button>
-
-  <button 
-    class="btn btn-ghost mb-6" 
-    hx-get="/min/stop"
-    hx-target="#min-event-poster"
-    hx-swap="innerHTML"
-  >stop</button>
-
   <div id="min-event-poster">
+      <button class="btn btn-ghost mb-6" hx-get="/min/start" hx-target="#min-event-poster" hx-swap="innerHTML">start</button>
   </div>
 
   <div class="flex">
@@ -28,7 +20,7 @@
         class="opacity-0 min-event-item status-{{.Status}}"
           _="on load transition my opacity to 1 over 0.4 seconds">
         <div class="w-full grid grid-cols-6" style="width : 100%;">
-          <div class="col-span-5">Title: {{.ID}}</div>
+          <div class="col-span-5">Title: {{.Title}}</div>
           <div class="col-span-1">
             <div class="grid grid-cols-2">
               <div>Status: </div>

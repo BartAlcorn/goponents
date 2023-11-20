@@ -5,12 +5,10 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-
-	"github.com/labstack/gommon/color"
 )
 
 func Simulate(w http.ResponseWriter, r *http.Request) {
-	color.Println(color.Yellow("Simulate Handler: started"))
+	// color.Println(color.Yellow("Simulate Handler: started"))
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
 	w.Header().Set("Connection", "keep-alive")
@@ -34,7 +32,6 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 	time.Sleep(1 * time.Second)
 	// generateUpdates
 	go generateUpdates(r.Context(), updateCh)
-	fmt.Println("starting updates")
 
 	for updateEvent := range updateCh {
 		event, err := formatUpdate("min-event-update", updateEvent)
@@ -52,6 +49,5 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 		flusher.Flush()
 	}
 
-	color.Println(color.Red("Simulate Handler: ended"))
-
+	// color.Println(color.Red("Simulate Handler: ended"))
 }

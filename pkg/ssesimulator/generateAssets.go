@@ -6,7 +6,7 @@ import (
 
 func generateAssets(addCh chan<- Asset) {
 	count := 8
-	color.Println(color.Green("generateAssets: started"))
+	// color.Println(color.Green("generateAssets: started"))
 
 	if len(Assets) > count {
 		color.Println(color.Yellow("generateAssets: resending"))
@@ -22,5 +22,5 @@ func generateAssets(addCh chan<- Asset) {
 		addCh <- a
 	}
 
-	color.Println(color.Green("generateAssets: Completed"))
+	// color.Println(color.Green("generateAssets: Completed"))
 }

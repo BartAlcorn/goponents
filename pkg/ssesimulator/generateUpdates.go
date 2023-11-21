@@ -45,7 +45,6 @@ dataLoop:
 			if len(Assets) < 1 {
 				break dataLoop
 			}
-			rand.Seed(time.Now().UnixNano())
 			l := len(Assets) - 1
 			if l < 0 {
 				color.Print(color.Red("index out of bounds"))

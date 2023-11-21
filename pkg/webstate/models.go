@@ -27,6 +27,6 @@ func init() {
 		Theme:  "cupcake",
 		Themes: []string{"light", "dark"},
 	}
-	// update to declared tailwind themes
+	// auto-parse and include tailwind themes from config
 	State.Themes = GetThemes()
 }

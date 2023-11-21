@@ -22,7 +22,9 @@ func GetThemes() (results []string) {
 			l := len(line) - 2
 
 			themes := strings.Split(line[9:l], ", ")
+			// results := []string{}
 			for _, t := range themes {
+				t := strings.Trim(t, "\"")
 				results = append(results, t)
 			}
 			return results

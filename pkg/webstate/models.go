@@ -25,6 +25,8 @@ func init() {
 			{Name: "min", Icon: "sse2", Path: "min"},
 		},
 		Theme:  "cupcake",
-		Themes: []string{"light", "dark", "cupcake", "garden", "retro", "business", "aqua"},
+		Themes: []string{"light", "dark"},
 	}
+	// update to declared tailwind themes
+	State.Themes = GetThemes()
 }

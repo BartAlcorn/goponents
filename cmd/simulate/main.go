@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 func main() {
 
-	fmt.Println("no more today...")
-	// ssesimulator.Simulate()
+	fmt.Println(webstate.GetThemes())
 }

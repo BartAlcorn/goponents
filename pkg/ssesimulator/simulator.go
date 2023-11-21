@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	"time"
 )
 
 func Simulate(w http.ResponseWriter, r *http.Request) {
@@ -29,7 +28,6 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 	// Send data to the client
 	go processAssets(ctx, flusher, w)
 
-	time.Sleep(1 * time.Second)
 	// generateUpdates
 	go generateUpdates(r.Context(), updateCh)
 

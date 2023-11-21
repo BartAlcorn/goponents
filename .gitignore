@@ -2,3 +2,5 @@
 .commit-milestones
 .zsh_config.zsh
 /node_modules
+air.log
+main

@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "golang.go",
+    "maracko.json-to-go",
+    "mikestead.dotenv",
+    "v4run.gotimeformat",
+  ]
+}

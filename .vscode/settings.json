@@ -1,0 +1,21 @@
+{
+  "files.associations": {
+    "*.gohtml": "html",
+    "*.css": "tailwindcss",
+    "*.scss": "tailwindcss"
+  },
+  "go.formatTool": "goimports",
+  "go.lintFlags": ["-composites=false"],
+  "go.lintOnSave": "package",
+  "go.lintTool": "golangci-lint",
+  "gopls": {
+    "ui.semanticTokens": true,
+    "usePlaceholders": true,
+    "completionDocumentation": true,
+    "hoverKind": "FullDocumentation", // No/Synopsis/Full, default Synopsis
+    "completeUnimported": true, // autocomplete unimported packages
+    "deepCompletion": true // enable deep completion
+  },
+  "go.vetFlags": ["-composites=false"],
+  "go.vetOnSave": "off"
+}

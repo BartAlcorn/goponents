@@ -10,15 +10,12 @@ require (
 	github.com/google/uuid v1.4.0
 	github.com/labstack/gommon v0.4.1
 	github.com/paganotoni/tailo v1.0.2
-	github.com/redis/go-redis/v9 v9.3.0
 	go.mongodb.org/mongo-driver v1.13.0
 )
 
 require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.2.0 // indirect
-	github.com/cespare/xxhash/v2 v2.2.0 // indirect
-	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect

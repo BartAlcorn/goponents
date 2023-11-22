@@ -8,7 +8,7 @@ import (
 	web "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
-func ServerSentEvents(w http.ResponseWriter, r *http.Request) {
+func SimpleSseExample(w http.ResponseWriter, r *http.Request) {
 
 	state := web.State
 
@@ -23,4 +23,5 @@ func ServerSentEvents(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error executing", err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
+
 }

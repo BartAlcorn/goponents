@@ -6,18 +6,12 @@ import (
 )
 
 type Config struct {
-	RedisAddress string
-	ServerPort   uint16
+	ServerPort uint16
 }
 
 func LoadConfig() Config {
 	cfg := Config{
-		RedisAddress: "localhost:6379",
-		ServerPort:   3000,
-	}
-
-	if redisAddr, exists := os.LookupEnv("REDIS_ADDR"); exists {
-		cfg.RedisAddress = redisAddr
+		ServerPort: 3000,
 	}
 
 	if serverPort, exists := os.LookupEnv("SERVER_PORT"); exists {

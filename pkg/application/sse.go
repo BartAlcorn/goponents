@@ -10,8 +10,8 @@ import (
 	"github.com/labstack/gommon/color"
 )
 
-func SSESimulator(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("SSESimulator started")
+func minSse(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("minSse started")
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
 	w.Header().Set("Connection", "keep-alive")
@@ -32,7 +32,7 @@ func SSESimulator(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 
 	// go routine for loop
-	go SSESimulatorLoop(r.Context(), simulateEventCh)
+	go minSseLoop(r.Context(), simulateEventCh)
 
 	// for each event received
 	for simulateEvent := range simulateEventCh {
@@ -46,7 +46,7 @@ func SSESimulator(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func SSESimulatorLoop(ctx context.Context, simulateEventCh chan<- string) {
+func minSseLoop(ctx context.Context, simulateEventCh chan<- string) {
 	ticker := time.NewTicker(time.Second)
 	names := []string{"Mike", "Bart", "Ben", "Jordan", "David"}
 

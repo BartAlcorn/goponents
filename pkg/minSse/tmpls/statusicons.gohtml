@@ -1,0 +1,30 @@
+{{define "status-pending-icon"}}
+<img src="/static/svgs/pending.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
+{{ end }}
+
+{{define "status-processing-icon"}}
+<img src="/static/svgs/processing.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
+{{ end }}
+
+{{define "status-error-icon"}}
+<img src="/static/svgs/error.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
+{{ end }}
+
+{{define "status-completed-icon"}}
+<img src="/static/svgs/completed.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
+{{ end }}
+
+
+{{define "statusicon"}}
+  {{ if eq .Status "pending"}}
+    {{ template "status-pending-icon"}}
+  {{ else if eq .Status "processing"}}
+    {{ template "status-processing-icon"}}
+  {{ else if eq .Status "error"}}
+    {{ template "status-error-icon"}}
+  {{ else if eq .Status "completed"}}
+    {{ template "status-completed-icon"}}
+  {{ else }}
+    {{ .Status }}
+  {{ end }}
+{{ end }}

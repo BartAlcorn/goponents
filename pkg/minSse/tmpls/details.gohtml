@@ -1,0 +1,48 @@
+{{block "details" .}}
+<div 
+  id="details-{{.ID}}"
+  {{if .Update}} hx-swap-oob="true" {{ end }}
+  class="opacity-0 min-event-item status-{{.Status}}"
+  _="on load transition my opacity to 1 over 0.4 seconds"
+>
+  <div class="flex">
+    <h1>{{.Title}}</h1>
+    </div>
+    <div class="grid grid-cols-2 flex">
+    <div class="grid grid-cols-2 flex place-items-start" style="max-width: 120px; margin-top:4px; margin-left: 16px;;">
+      <div>Status:</div>
+      <div>{{template "statusicon" .}}</div>
+    </div>
+        <div class="grid grid-cols-2 flex place-items-start" style="max-width: 140px; margin-top:4px; margin-left: 16px;;">
+          <div>Elapsed: </div>
+          <div>{{ .Elapsed }}</div>
+        </div>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Status</th>
+          <th>Started</th>
+          <th>Elapsed</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $h := .History}}
+        <tr  class="status-{{$h.Status}}">
+          <td>{{ $h.Process }}</td>
+          <td>{{ $h.Status }}</td>
+          <td class="flex"><div>{{$h.Start | date "15:04:05"}}</div>&nbsp;<div>{{$h.Start | date "2006-01-02"}}</div></td>
+          <td>{{ $h.Elapsed }}</td>
+          {{if eq .Status "error"}}<tr class="status-error"><td>{{template "status-error-icon"}}</td><td colspan="3">{{$h.Description}}</td></tr>{{end}}
+        </tr>
+        {{
+          end
+        }}
+      </tbody>
+    </table>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,18 @@
+{{block "sseStart" .}}
+<button class="btn btn-ghost mb-6" hx-get="/min/stop" hx-target="#min-event-poster" hx-swap="innerHTML">stop</button>
+<div
+  id="min-event-posts"
+  hx-ext="sse" 
+  sse-connect="/min/events"
+  sse-swap="min-event-asset,min-event-update,min-event-close" 
+  hx-swap="beforeend" 
+  hx-target="#min-vsp-event-updates"
+>
+</div>
+{{end}}
+
+{{block "sseStop" .}}
+<button class="btn btn-ghost mb-6" hx-get="/min/start" hx-target="#min-event-poster" hx-swap="innerHTML">start</button>
+<div id="min-event-posts" hx-target="#min-vsp-event-updates">
+</div>
+{{end}}

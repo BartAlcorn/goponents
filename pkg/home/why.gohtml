@@ -1,0 +1,21 @@
+{{define "why"}}
+<div>
+  <h1>GOponents</h1>
+  <p class="prose">A technology demonstrator for</p>
+  <ul class="prose ml-4">
+    <li>GO, with auto-reloading via air</li>
+    <li>HTMX, with browser reloading via browser-sync</li>
+    <li>HyperScript</li>
+  </ul>
+  <p class="prose mt-6">with built-in support for</p>
+    <ul class="prose ml-4">
+      <li>TailwindCSS, with auto-reloading</li>
+      <li>daisyUI</li>
+      <li>themes, and more</li>
+    </ul>
+  <p class="prose mt-6">run the following from a terminal window:</p>
+  <p class="text-slate-300/100 ml-4">$ <span class="text-sky-600/100">source ./dev.sh</span></p>
+  <p class="prose mt-6">One of the main principles of HTMX is HATEOAS (Hypermedia as the engine of application state). Simply put, state is maintained on the server, not the client.</p>
+  <p class="prose mt-6"></p>This is demonstrated here in several ways. Theme and (current) Module have their state maintained on the server. This allows the user to reload the page, withOUT losing state.</p>
+</div>
+{{ end }}

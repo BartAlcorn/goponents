@@ -5,19 +5,19 @@ import (
 	"html/template"
 	"net/http"
 
-	web "github.com/bartalcorn/goponents/pkg/webstate"
+	web "github.com/bartalcorn/goponents/pkg/state"
 )
 
+// Home serves the GET "/home/" route
 func Home(w http.ResponseWriter, r *http.Request) {
-
 	web.State.Module = "home"
 
-	t, err := template.ParseFiles("pkg/home/home.gohtml", "pkg/index/tech.gohtml", "pkg/index/why.gohtml", "pkg/index/stack.gohtml")
+	t, err := template.ParseGlob("pkg/home/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
-	err = t.Execute(w, &web.State)
+	err = t.ExecuteTemplate(w, "tech", &web.State)
 	if err != nil {
 		fmt.Println("error executing", err)
 		w.WriteHeader(http.StatusInternalServerError)

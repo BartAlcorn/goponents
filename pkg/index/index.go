@@ -5,7 +5,7 @@ import (
 	"html/template"
 	"net/http"
 
-	web "github.com/bartalcorn/goponents/pkg/webstate"
+	web "github.com/bartalcorn/goponents/pkg/state"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {

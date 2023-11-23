@@ -17,14 +17,17 @@ func generateHistory(status string, a Asset) Asset {
 	if status == "error" {
 		h.Description = excuses.Tech()
 	}
-	a.History = append(a.History, h)
+	a.History = append([]History{h}, a.History...)
 	a = generateElapsed(a)
 	return a
 }
 
 func generateElapsed(a Asset) Asset {
-	l := len(a.History) - 1
-	a.History[l].Elapsed = time.Since(a.History[l-1].Start)
+	l := len(a.History)
+	if l == 0 {
+		return a
+	}
+	a.History[0].Elapsed = time.Since(a.History[1].Start).Round(3 * time.Millisecond)
 	return a
 }
 
@@ -84,8 +87,7 @@ dataLoop:
 				}
 				Assets[r] = a
 				a.Update = true
-				l := len(a.History) - 1
-				a.Elapsed = a.History[l].Start.Sub(a.History[0].Start)
+				a.Elapsed = a.History[len(a.History)-1].Start.Sub(a.History[0].Start).Round(3*time.Millisecond) * -1
 				if a.ID == monitorID {
 					a.Monitor = a.ID
 				}

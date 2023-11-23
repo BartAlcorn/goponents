@@ -11,6 +11,7 @@ func MakeAsset() Asset {
 	h.Process = "Receiving"
 	h.Status = "pending"
 	h.Start = time.Now()
+	h.Elapsed = (0 * time.Millisecond)
 
 	var a Asset
 	a.ID = uuid.NewString()

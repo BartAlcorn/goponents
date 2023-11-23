@@ -1,23 +1,16 @@
 package application
 
 import (
-	"os"
-	"strconv"
+	env "github.com/caitlinelfring/go-env-default"
 )
 
 type Config struct {
-	ServerPort uint16
+	ServerPort int
 }
 
 func LoadConfig() Config {
 	cfg := Config{
-		ServerPort: 3000,
-	}
-
-	if serverPort, exists := os.LookupEnv("SERVER_PORT"); exists {
-		if port, err := strconv.ParseUint(serverPort, 10, 16); err == nil {
-			cfg.ServerPort = uint16(port)
-		}
+		ServerPort: env.GetIntDefault("SERVERPORT", 3000),
 	}
 
 	return cfg

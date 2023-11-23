@@ -1,4 +1,4 @@
-package webstate
+package state
 
 import (
 	"net/http"

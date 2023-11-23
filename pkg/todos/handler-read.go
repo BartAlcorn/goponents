@@ -5,8 +5,8 @@ import (
 	"html/template"
 	"net/http"
 
+	state "github.com/bartalcorn/goponents/pkg/state"
 	"github.com/bartalcorn/goponents/pkg/web"
-	state "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 // Read calls the GetAll func

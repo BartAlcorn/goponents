@@ -1,4 +1,4 @@
-package webstate
+package state
 
 import "github.com/go-chi/chi/v5"
 

@@ -1,6 +1,6 @@
-package webstate
+package state
 
-type WebState struct {
+type state struct {
 	Module  string
 	Modules []WebModule
 	Theme   string
@@ -13,10 +13,10 @@ type WebModule struct {
 	Path string
 }
 
-var State WebState
+var State state
 
 func init() {
-	State = WebState{
+	State = state{
 		Module: "home",
 		Modules: []WebModule{
 			{Name: "home", Icon: "home", Path: "home"},

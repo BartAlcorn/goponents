@@ -8,9 +8,9 @@ import (
 )
 
 type AppConfig struct {
-	router http.Handler
-	Ctx    context.Context
 	config Config
+	Ctx    context.Context
+	router http.Handler
 }
 
 var App *AppConfig

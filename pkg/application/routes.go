@@ -9,9 +9,10 @@ import (
 
 	home "github.com/bartalcorn/goponents/pkg/home"
 	idx "github.com/bartalcorn/goponents/pkg/index"
-	sse "github.com/bartalcorn/goponents/pkg/minSse"
+	min "github.com/bartalcorn/goponents/pkg/minSse"
+	sse "github.com/bartalcorn/goponents/pkg/simpleSse"
+	state "github.com/bartalcorn/goponents/pkg/state"
 	todos "github.com/bartalcorn/goponents/pkg/todos"
-	webstate "github.com/bartalcorn/goponents/pkg/webstate"
 )
 
 func (a *AppConfig) loadRoutes() {
@@ -38,17 +39,10 @@ func (a *AppConfig) loadRoutes() {
 
 	// grouped routes
 	router.Route("/home/", home.Routes)
-	router.Route("/events", a.loadSSERoutes)
-	router.Route("/min", sse.Routes)
-	router.Route("/sse", a.loadSSERoutes)
-	router.Route("/state", webstate.Routes)
+	router.Route("/min", min.Routes)
+	router.Route("/sse", sse.Routes)
+	router.Route("/state", state.Routes)
 	router.Route("/todos", todos.Routes)
 
 	a.router = router
-}
-
-// Simple Server Sent Events demonstrator
-func (a *AppConfig) loadSSERoutes(router chi.Router) {
-	router.Get("/", idx.SimpleSseExample)
-	router.Get("/events", minSse)
 }

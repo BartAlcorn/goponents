@@ -1,4 +1,4 @@
-package application
+package simplesse
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/gommon/color"
 )
 
-func minSse(w http.ResponseWriter, r *http.Request) {
+func SimpleSse(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("minSse started")
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")

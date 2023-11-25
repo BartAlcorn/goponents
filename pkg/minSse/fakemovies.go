@@ -1,8 +1,7 @@
-package minSse
+package minsse
 
 import (
 	"math/rand"
-	"time"
 )
 
 var fakemovies = []string{
@@ -39,7 +38,6 @@ var fakemovies = []string{
 }
 
 func FakeMovie() string {
-	rand.Seed(time.Now().UnixNano())
 	max := len(fakemovies)
 	n := rand.Intn(max)
 

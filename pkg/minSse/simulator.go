@@ -1,4 +1,4 @@
-package minSse
+package minsse
 
 import (
 	"context"
@@ -32,7 +32,7 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 	go generateUpdates(r.Context(), updateCh)
 
 	for updateEvent := range updateCh {
-		event, err := formatUpdate("min-event-update", updateEvent)
+		event, err := formatReturn("min-event-update", updateEvent, "assets")
 		if err != nil {
 			fmt.Println(err)
 			break

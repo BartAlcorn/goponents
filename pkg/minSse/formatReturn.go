@@ -1,4 +1,4 @@
-package minSse
+package minsse
 
 import (
 	"bytes"
@@ -9,13 +9,13 @@ import (
 	"github.com/Masterminds/sprig/v3"
 )
 
-func formatUpdate(event string, data any) (string, error) {
+func formatReturn(event string, data any, tmpl string) (string, error) {
 	var tpl bytes.Buffer
 	t, err := template.New("simulator.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/minSse/tmpls/*.gohtml")
 	if err != nil {
-		fmt.Println("error parsin template formatUpdate", err)
+		fmt.Println("error parsin template formatReturn", err)
 	}
-	err = t.ExecuteTemplate(&tpl, "assets", data)
+	err = t.ExecuteTemplate(&tpl, tmpl, data)
 	if err != nil {
 		fmt.Println("error executing", err)
 		// w.WriteHeader(http.StatusInternalServerError)

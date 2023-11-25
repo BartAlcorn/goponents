@@ -1,4 +1,4 @@
-package minSse
+package minsse
 
 import (
 	"github.com/labstack/gommon/color"

@@ -1,11 +1,11 @@
-package minSse
+package minsse
 
 import (
 	"github.com/go-chi/chi/v5"
 )
 
 func Routes(r chi.Router) {
-	r.Get("/", ShowMain)
+	r.Get("/", HandleMain)
 	r.Get("/events", Simulate)
 	r.Get("/start", HandleStart)
 	r.Get("/stop", HandleStop)

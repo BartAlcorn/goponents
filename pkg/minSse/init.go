@@ -1,4 +1,4 @@
-package minSse
+package minsse
 
 // sprig "github.com/Masterminds/sprig/v3"
 

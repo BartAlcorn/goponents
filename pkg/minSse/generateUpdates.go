@@ -1,4 +1,4 @@
-package minSse
+package minsse
 
 import (
 	"context"
@@ -10,6 +10,10 @@ import (
 )
 
 func generateHistory(status string, a Asset) Asset {
+	l := len(a.History)
+	if l > 0 {
+		a.History[0].End = time.Now()
+	}
 	var h History
 	h.Process = tasks[rand.Intn(len(tasks))]
 	h.Status = status
@@ -27,7 +31,8 @@ func generateElapsed(a Asset) Asset {
 	if l == 0 {
 		return a
 	}
-	a.History[0].Elapsed = time.Since(a.History[1].Start).Round(3 * time.Millisecond)
+	a.History[1].End = time.Now()
+	a.History[1].Elapsed = a.History[1].End.Sub(a.History[1].Start).Round(3 * time.Millisecond)
 	return a
 }
 
@@ -53,46 +58,7 @@ dataLoop:
 				color.Print(color.Red("index out of bounds"))
 				break dataLoop
 			}
-			r := 0
-			if l > 1 {
-				r = rand.Intn(l)
-			}
-			a := Assets[r]
-			if a.Status == "completed" {
-				removeAsset(r)
-			} else {
-				switch a.Status {
-				case "pending":
-					a.Status = "processing"
-					a = generateHistory("processing", a)
-				case "error":
-					q := rand.Intn(10)
-					if q < 2 {
-						a.Status = "processing"
-						a = generateHistory("processing", a)
-					} else {
-						a = generateHistory("error", a)
-					}
-				case "processing":
-					q := rand.Intn(10)
-					if q < 2 {
-						a.Status = "error"
-						a = generateHistory("error", a)
-					} else {
-						a.Status = "completed"
-						a = generateHistory("completed", a)
-					}
-				default:
-					// do nothing
-				}
-				Assets[r] = a
-				a.Update = true
-				a.Elapsed = a.History[len(a.History)-1].Start.Sub(a.History[0].Start).Round(3*time.Millisecond) * -1
-				if a.ID == monitorID {
-					a.Monitor = a.ID
-				}
-				updateCh <- a
-			}
+			MakeUpdate(ctx, updateCh)
 		}
 	}
 

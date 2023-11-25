@@ -7,10 +7,12 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/bartalcorn/goponents/pkg/state"
 	"github.com/labstack/gommon/color"
 )
 
 func SimpleSse(w http.ResponseWriter, r *http.Request) {
+	state.State.Module = "sse"
 	fmt.Println("minSse started")
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")

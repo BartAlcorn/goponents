@@ -15,12 +15,15 @@ type MongoRepo struct {
 	Clients map[string]*mongo.Client
 }
 
-var clients = make(map[string]*mongo.Client)
+// MoRepo a collection of connections
 var MgoRepo MongoRepo
+var clients = make(map[string]*mongo.Client)
 
+// init initializes the Mongo packge
 func init() {
-	mongos := os.Getenv("MONGOS")
+	MgoRepo.Clients = clients
 
+	mongos := os.Getenv("MONGOS")
 	if mongos == "" {
 		return
 	}
@@ -33,8 +36,6 @@ func init() {
 		vp := strings.Split(v, "]")
 		connectToMongo(vp[0], vp[1])
 	}
-	MgoRepo.Clients = clients
-
 }
 
 func connectToMongo(name string, url string) error {
@@ -49,7 +50,6 @@ func connectToMongo(name string, url string) error {
 
 	// Check the connection
 	err = client.Ping(context.TODO(), nil)
-
 	if err != nil {
 		log.Println("PING FAILURE", err)
 	}

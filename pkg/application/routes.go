@@ -9,7 +9,7 @@ import (
 
 	home "github.com/bartalcorn/goponents/pkg/home"
 	idx "github.com/bartalcorn/goponents/pkg/index"
-	min "github.com/bartalcorn/goponents/pkg/minSse"
+	min "github.com/bartalcorn/goponents/pkg/minsse"
 	sse "github.com/bartalcorn/goponents/pkg/simpleSse"
 	state "github.com/bartalcorn/goponents/pkg/state"
 	todos "github.com/bartalcorn/goponents/pkg/todos"

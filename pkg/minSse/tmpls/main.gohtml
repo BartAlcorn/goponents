@@ -1,3 +1,4 @@
+{{define "main"}}
 <div class="container mx-auto px-4">
   <div class="text-lg mb-2">Below is an example of <span style="font-weight:bold;">Server Sent Events</span>.</div>
   <div class="text-md mb-2">This simulates the fictious Video Readying Process(VRP) within the equally fictious Streaming Service "<span style="font-weight:bold;">MIN</span>".</div>
@@ -43,3 +44,4 @@
   on htmx:sseMessage log event.detail.type
   on htmx:sseMessage log event.detail.data
 </script> -->
+{{end}}

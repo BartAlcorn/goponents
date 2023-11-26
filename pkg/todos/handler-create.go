@@ -1,8 +1,6 @@
 package todos
 
 import (
-	"fmt"
-	"html/template"
 	"net/http"
 
 	"github.com/bartalcorn/goponents/pkg/web"
@@ -22,11 +20,5 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	t, err := template.ParseGlob("pkg/todos/tmpls/*.gohtml")
-	if err != nil {
-		fmt.Println("error parsing gohtml", err)
-		w.WriteHeader(http.StatusInternalServerError)
-	}
-
-	web.RespondWithTemplate(w, r, item, t, "todo-list-element")
+	web.Respond(w, r, item, "pkg/todos/tmpls/*.gohtml", "todo-list-element")
 }

@@ -3,7 +3,6 @@ package todos
 import (
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"net/http"
 
 	"github.com/bartalcorn/goponents/pkg/web"
@@ -36,11 +35,5 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	t, err := template.ParseGlob("pkg/todos/tmpls/*.gohtml")
-	if err != nil {
-		fmt.Println("error parsing gohtml", err)
-		w.WriteHeader(http.StatusInternalServerError)
-	}
-
-	web.Respond(w, r, item, t)
+	web.Respond(w, r, item, "pkg/todos/tmpls/*.gohtml", "")
 }

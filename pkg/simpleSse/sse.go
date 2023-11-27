@@ -5,12 +5,12 @@ import (
 	"html/template"
 	"net/http"
 
-	web "github.com/bartalcorn/goponents/pkg/state"
+	"github.com/bartalcorn/goponents/pkg/state"
 )
 
 func SimpleSseExample(w http.ResponseWriter, r *http.Request) {
 
-	state := web.State
+	state := state.State
 
 	t, err := template.ParseGlob("pkg/index/sse.gohtml")
 	if err != nil {

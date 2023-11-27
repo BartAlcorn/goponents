@@ -12,7 +12,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	newState := state.State
 
-	t, err := template.ParseGlob("pkg/index/*.gohtml")
+	t, err := template.ParseGlob("pkg/index/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

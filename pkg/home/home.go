@@ -12,7 +12,7 @@ import (
 func Home(w http.ResponseWriter, r *http.Request) {
 	state.State.Module = "home"
 
-	t, err := template.ParseGlob("pkg/home/*.gohtml")
+	t, err := template.ParseGlob("pkg/home/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)

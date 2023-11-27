@@ -5,12 +5,12 @@ import (
 	"html/template"
 	"net/http"
 
-	web "github.com/bartalcorn/goponents/pkg/state"
+	state "github.com/bartalcorn/goponents/pkg/state"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
 
-	state := web.State
+	newState := state.State
 
 	t, err := template.ParseGlob("pkg/index/*.gohtml")
 	if err != nil {
@@ -18,7 +18,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
 
-	err = t.Execute(w, state)
+	err = t.Execute(w, newState)
 	if err != nil {
 		fmt.Println("error executing", err)
 		w.WriteHeader(http.StatusInternalServerError)

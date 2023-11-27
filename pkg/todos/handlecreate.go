@@ -3,7 +3,7 @@ package todos
 import (
 	"net/http"
 
-	"github.com/bartalcorn/goponents/pkg/web"
+	"github.com/bartalcorn/goponents/pkg/htmx"
 	"github.com/google/uuid"
 )
 
@@ -20,5 +20,5 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	web.Respond(w, r, item, "pkg/todos/tmpls/*.gohtml", "todo-list-element")
+	htmx.Respond(w, r, item, "pkg/todos/tmpls/*.gohtml", "todo-list-element")
 }

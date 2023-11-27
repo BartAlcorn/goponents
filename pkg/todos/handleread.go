@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/bartalcorn/goponents/pkg/htmx"
 	state "github.com/bartalcorn/goponents/pkg/state"
-	"github.com/bartalcorn/goponents/pkg/web"
 )
 
 // Read calls the GetAll func
@@ -17,5 +17,5 @@ func Read(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error getting all", err)
 	}
 
-	web.Respond(w, r, i, "pkg/todos/tmpls/*.gohtml", "grid")
+	htmx.Respond(w, r, i, "pkg/todos/tmpls/*.gohtml", "grid")
 }

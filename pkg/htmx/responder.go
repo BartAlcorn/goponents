@@ -1,4 +1,4 @@
-package web
+package htmx
 
 import (
 	"fmt"
@@ -6,8 +6,7 @@ import (
 	"net/http"
 
 	"github.com/Masterminds/sprig/v3"
-	"github.com/bartalcorn/goponents/pkg/htmx"
-	web "github.com/bartalcorn/goponents/pkg/index"
+	"github.com/bartalcorn/goponents/pkg/index"
 )
 
 // Respond takes in the .gohtml template file(s), parses the template(s)
@@ -28,7 +27,7 @@ func Respond(w http.ResponseWriter, r *http.Request, item interface{}, t string,
 		fmt.Println("error parsing gohtml", err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
-	if htmx.IsHTMX(r) {
+	if IsHTMX(r) {
 		if block == "" {
 			err = tmpl.Execute(w, item)
 		} else {
@@ -41,6 +40,6 @@ func Respond(w http.ResponseWriter, r *http.Request, item interface{}, t string,
 		}
 		return
 	}
-	web.Index(w, r)
+	index.Index(w, r)
 
 }

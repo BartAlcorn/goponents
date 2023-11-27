@@ -1,4 +1,4 @@
-package web
+package htmx
 
 import (
 	"encoding/json"

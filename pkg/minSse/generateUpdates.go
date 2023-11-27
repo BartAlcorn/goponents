@@ -58,7 +58,7 @@ dataLoop:
 				color.Print(color.Red("index out of bounds"))
 				break dataLoop
 			}
-			MakeUpdate(ctx, updateCh)
+			go MakeUpdate(ctx, updateCh)
 		}
 	}
 

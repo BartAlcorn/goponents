@@ -5,13 +5,13 @@
       end
   end
 </script>
-<div class="container mx-auto px-4">
-  <div>Below is an example of Server Sent Events.</div>
-  <div>The server is sending the time and a random name every two seconds.</div>
+<div class="container mx-auto">
+  <div class="text-lg mb-2">Below is a simple example of <span style="font-weight:bold;">Server Sent Events</span>.</div>
+  <div class="text-md mb-2">The server is sending the time and a random name every two seconds.</div>
   <h1 
     hx-ext="sse"
     sse-connect="/sse/events"
     sse-swap="message"
-    >SSE Test 2</h1>
+    >SSE Simple Example</h1>
 
 </div>

@@ -13,12 +13,11 @@ import (
 
 func SimpleSse(w http.ResponseWriter, r *http.Request) {
 	state.State.Module = "sse"
-	fmt.Println("minSse started")
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
 	w.Header().Set("Connection", "keep-alive")
 
-	color.Println(color.Green("starting Simple SSE Simulation"))
+	color.Println(color.Green("starting Simple SSE"))
 
 	flusher, ok := w.(http.Flusher)
 	if !ok {
@@ -50,7 +49,7 @@ func SimpleSse(w http.ResponseWriter, r *http.Request) {
 
 func minSseLoop(ctx context.Context, simulateEventCh chan<- string) {
 	ticker := time.NewTicker(time.Second)
-	names := []string{"Mike", "Bart", "Ben", "Jordan", "David"}
+	names := []string{"Allie", "Bart", "Charlene", "Doug", "Ellen", "Frank", "Glory", "Henry", "Ida", "John", "Kathleen", "Liam", "Mary", "Ned", "Ophelia", "Paul", "Quincy", "Robert", "Sue", "Tom", "Uma", "Victor", "Wilma", "Xander", "Yvette", "Zod"}
 
 eventLoop:
 	for {
@@ -68,5 +67,5 @@ eventLoop:
 
 	close(simulateEventCh)
 
-	color.Println(color.Red("stopping Simple SSE Simulation"))
+	color.Println(color.Red("stopping Simple SSE"))
 }

@@ -2883,10 +2883,6 @@ html {
   grid-column: span 1 / span 1;
 }
 
-.col-span-11 {
-  grid-column: span 11 / span 11;
-}
-
 .col-span-5 {
   grid-column: span 5 / span 5;
 }
@@ -2996,10 +2992,6 @@ html {
   flex-grow: 1;
 }
 
-.grid-cols-12 {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-}
-
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -3026,10 +3018,6 @@ html {
 
 .items-center {
   align-items: center;
-}
-
-.items-stretch {
-  align-items: stretch;
 }
 
 .justify-between {
@@ -3071,11 +3059,6 @@ html {
 
 .p-2 {
   padding: 0.5rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .pl-2 {
@@ -3174,13 +3157,17 @@ h1 {
 }
 
 .status-processing {
-  background-color: #99cbf2;
+  background-color: #b6d8f2;
 }
 
 .status-error {
-  background-color: #edcece;
+  background-color: #eddbdb;
 }
 
 .status-completed {
-  background-color: #c8f2c8;
+  background-color: #e1f4e1;
+}
+
+.smooth {
+  transition: all 0.4s ease-in;
 }

@@ -46,13 +46,17 @@ h1 {
 }
 
 .status-processing {
-  background-color: #99cbf2;
+  background-color: #b6d8f2;
 }
 
 .status-error {
-  background-color: #edcece;
+  background-color: #eddbdb;
 }
 
 .status-completed {
-  background-color: #c8f2c8;
+  background-color: #e1f4e1;
+}
+
+.smooth {
+  transition: all 0.4s ease-in;
 }

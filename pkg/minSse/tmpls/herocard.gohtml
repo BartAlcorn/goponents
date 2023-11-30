@@ -1,0 +1,34 @@
+{{block "herocard" .}}
+<div id="herocard-{{.Name}}" class="herocard" hx-swap-oob="true">
+  <div class="herotitle" style="margin-bottom: 12px;">{{.Name | title}}: {{.Total}}</div>
+    <div>
+      <table class="w-full">
+        <tr class="status-error">
+          <td>Errors:</td>
+          <td style="text-align: right">{{ .Errors }}</td>
+          <td style="text-align: right">{{ .ErrorP }}%</td>
+        </tr>
+        <tr class="status-failure">
+          <td>Failures:</td>
+          <td style="text-align: right">{{ .Failures }}</td>
+          <td style="text-align: right">{{ .FailureP }}%</td>
+        </tr>
+        <tr class="status-processing">
+          <td>Processing:</td>
+          <td style="text-align: right">{{ .Processings }}</td>
+          <td style="text-align: right">{{ .ProcessingP }}%</td>
+        </tr>
+        <tr class="status-pending">
+          <td>Pending:</td>
+          <td style="text-align: right">{{ .Pendings }}</td>
+          <td style="text-align: right">{{ .PendingP }}%</td>
+        </tr>
+        <tr class="status-completed">
+          <td>Completed:</td>
+          <td style="text-align: right">{{ .Completeds }}</td>
+          <td style="text-align: right">{{ .CompletedP }}%</td>
+        </tr>
+      </table>
+  </div>
+</div>
+{{ end }}

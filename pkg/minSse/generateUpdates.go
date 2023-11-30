@@ -35,7 +35,7 @@ dataLoop:
 
 	ticker.Stop()
 
-	close(updateCh)
+	// close(updateCh)
 
 	// color.Println(color.Yellow("generateUpdates: Completed"))
 }

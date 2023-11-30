@@ -1,16 +1,27 @@
 {{define "main"}}
 <div class="container mx-auto">
-  <div class="text-lg mb-2">Below is a complex example of <span style="font-weight:bold;">Server Sent Events</span>.</div>
-  <div class="text-md mb-2">This simulates the fictious Video Readying Process(VRP) within the equally fictious Streaming Service "<span style="font-weight:bold;">MIN</span>".</div>
-  <div class="text-md mb-2">This example grossly over simplifes the process of readying videos for playback to MIN's <span id="subscriber-count" style="font-weight:bold;">many</span> subscribers.</div>
-  <div class="text-md mb-2">The movie titles are randomly taken from the IMDB top 30 list and are for demonsttation purposes only.</div>
 
-  <div id="min-event-poster">
-      <button class="btn btn-ghost mb-6" hx-get="/min/start" hx-target="#min-event-poster" hx-swap="innerHTML">start</button>
+  <div class="flex flex-row" style="max-width: 1300px;">
+    <div class="flex-grow">
+      <div class="text-lg mb-2">Below is a complex example of <span style="font-weight:bold;">Server Sent Events</span>.</div>
+      <div class="text-md mb-2">This simulates the fictious Video Readying Process(VRP) within the equally fictious Streaming Service "<span style="font-weight:bold;">MIN</span>".</div>
+      <div class="text-md mb-2">This example grossly over simplifes the process of readying videos for playback to MIN's <span id="subscriber-count" style="font-weight:bold;">many</span> subscribers.</div>
+      <div class="text-md mb-2">The movie titles are randomly taken from the IMDB top 30 list and are for demonsttation purposes only.</div>
       <div class="text-md mb-2">This goal of this is to simulate a listener on an event bridge, and update status as these events occur. </div>
-  </div>
+    </div>
+    <div style="width: 120px;">
+      <div id="min-event-poster">
+        <button class="btn btn-ghost mb-6" hx-get="/min/start" hx-target="#min-event-poster"
+          hx-swap="innerHTML">start</button>
+      </div>
+    </div>
+      <div class="flex flex-row" style="width: 420px;">
+        <div id="herocard-counts" class="herocard"></div>
+        <div id="herocard-metrics" class="herocard"></div>
+      </div>
+    </div>
 
-  <div class="flex">
+  <div class="flex mt-4">
     <div id="min-vsp-event-updates" class="max-w-[50%]" style="max-height: 500px; overflow-x: auto;">
     {{ block "assets" .}}
       {{if .ID}}
@@ -33,10 +44,13 @@
       </div>
       <span id="subscriber-count" style="font-weight:bold;" hx-swap-oob="true" hx-swap="innerHTML">{{ randInt 12 30 }}</span>
       {{if eq .ID .Monitor}}{{template "details" .}}{{end}}
+      {{template "herocard" .Counts}}
+      {{template "herocard" .Metrics}}
       {{end}}
     {{end}}
     </div>
     <div id="min-vsp-event-details" hx-ext="sse" sse-swap="min-event-detail-update" class="max-w-[50%]" style="padding-left: 24px;max-height: 500px; overflow-x: auto;">
+      
     </div>
     </div>
 </div>

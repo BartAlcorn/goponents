@@ -19,8 +19,6 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	updateCh := make(chan Asset)
-
 	// Create a context for handling client disconnection
 	ctx, cancel := context.WithCancel(r.Context())
 	defer cancel()
@@ -32,6 +30,8 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 	go generateUpdates(r.Context(), updateCh)
 
 	for updateEvent := range updateCh {
+		updateEvent.Counts = Stats["counts"]
+		updateEvent.Metrics = Stats["metrics"]
 		event, err := formatReturn("min-event-update", updateEvent, "assets")
 		if err != nil {
 			fmt.Println(err)

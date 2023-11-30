@@ -6,7 +6,14 @@
   _="on load transition my opacity to 1 over 0.4 seconds"
 >
   <div class="flex">
-    <h1>{{.Title}}</h1>
+    <div class="flex flex-row w-full">
+      <h1>{{.Title}}</h1>
+      <div style="margin-left: auto;"
+        _="on click transition #details-{{.ID}}'s opacity to 0 over 1.5 seconds then remove #details-{{.ID}}"
+      >
+        <img src="/static/svgs/close.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
+      </div>
+    </div>
     </div>
     <div class="grid grid-cols-2">
       <div class="flex" style="margin-top:4px; margin-left: 16px;">
@@ -38,6 +45,7 @@
           <td>{{ if not $h.End.IsZero }}{{$h.End | date "15:04:05 2006-01-02"}}{{end}}</td>
           <td>{{ $h.Elapsed }}</td>
           {{if eq .Status "error"}}<tr class="status-error"><td>{{template "status-error-icon"}}</td><td colspan="4">{{$h.Description}}</td></tr>{{end}}
+          {{if eq .Status "failure"}}<tr class="status-failure"><td>{{template "status-failure-icon"}}</td><td colspan="4">{{$h.Description}}</td></tr>{{end}}
         </tr>
         {{ end }}
       </tbody>

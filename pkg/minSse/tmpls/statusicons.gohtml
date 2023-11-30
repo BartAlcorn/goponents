@@ -10,18 +10,24 @@
 <img src="/static/svgs/error.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
 {{ end }}
 
+{{define "status-failure-icon"}}
+<img src="/static/svgs/failure.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
+{{ end }}
+
 {{define "status-completed-icon"}}
 <img src="/static/svgs/completed.svg" style="height: 24px; stroke-width: 4; margin-left:4px;">
 {{ end }}
 
 
 {{define "statusicon"}}
-  {{ if eq .Status "pending"}}
-    {{ template "status-pending-icon"}}
+  {{ if eq .Status "error"}}
+    {{ template "status-error-icon"}}
+  {{ else if eq .Status "failure"}}
+    {{ template "status-failure-icon"}}
   {{ else if eq .Status "processing"}}
     {{ template "status-processing-icon"}}
-  {{ else if eq .Status "error"}}
-    {{ template "status-error-icon"}}
+  {{ else if eq .Status "pending"}}
+    {{ template "status-pending-icon"}}
   {{ else if eq .Status "completed"}}
     {{ template "status-completed-icon"}}
   {{ else }}

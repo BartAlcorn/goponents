@@ -7,12 +7,13 @@ import (
 )
 
 func processAssets(ctx context.Context, flusher http.Flusher, w http.ResponseWriter) {
-	addCh := make(chan Asset)
 
 	// Send data to the client
-	go generateAssets(addCh)
+	go generateAssets(8)
 	// Send event data to the client
 	for addEvent := range addCh {
+		addEvent.Counts = Stats["counts"]
+		addEvent.Metrics = Stats["metrics"]
 		event, err := formatReturn("min-event-asset", addEvent, "assets")
 		if err != nil {
 			fmt.Println("ERROR: generateAssets: formatReturn", err)
@@ -22,6 +23,7 @@ func processAssets(ctx context.Context, flusher http.Flusher, w http.ResponseWri
 		_, err = fmt.Fprint(w, event)
 		if err != nil {
 			fmt.Println("ERROR: generateAssets: Fprint", err)
+			fmt.Println("ERROR: generateAssets: w", w)
 			break
 		}
 

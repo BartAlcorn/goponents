@@ -16,7 +16,7 @@ func (a *Asset) generateHistory(status string) {
 	h.Process = tasks[rand.Intn(len(tasks)-1)]
 	h.Status = status
 	h.Start = time.Now()
-	if status == "error" {
+	if status == "error" || status == "failure" {
 		h.Description = excuses.Tech()
 	}
 	a.History = append([]History{h}, a.History...)

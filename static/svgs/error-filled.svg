@@ -1,0 +1,6 @@
+<svg width="24" height="24"
+  xmlns="http://www.w3.org/2000/svg" status="error" stroke-linejoin="round" stroke-linecap="round" fill="rgba(217, 79, 102, 1)" stroke-width="2" stroke="rgba(217, 79, 102, 1)">
+  <path id="svg_2" d="m8.7,3l6.6,0c0.3,0 0.5,0.1 0.7,0.3l4.7,4.7c0.2,0.2 0.3,0.4 0.3,0.7l0,6.6c0,0.3 -0.1,0.5 -0.3,0.7l-4.7,4.7c-0.2,0.2 -0.4,0.3 -0.7,0.3l-6.6,0c-0.3,0 -0.5,-0.1 -0.7,-0.3l-4.7,-4.7c-0.2,-0.2 -0.3,-0.4 -0.3,-0.7l0,-6.6c0,-0.3 0.1,-0.5 0.3,-0.7l4.7,-4.7c0.2,-0.2 0.4,-0.3 0.7,-0.3z"/>
+  <line stroke="#ffffff" id="svg_3" y2="12" x2="12" y1="8" x1="12"/>
+  <line stroke="#ffffff" id="svg_4" y2="16" x2="12.01" y1="16" x1="12"/>
+</svg>

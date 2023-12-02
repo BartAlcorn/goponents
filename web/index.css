@@ -1,5 +1,5 @@
+@import "./status.css";
 @import "../pkg/minsse/tmpls/component.css";
-@import "../pkg/sco/tmpls/component.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,30 +25,6 @@ mainmodule {
 .deleteSVG:hover {
   stroke-width: 2px;
   stroke: #f00 !important;
-}
-
-.status-pending {
-  background-color: #f7f2f2;
-}
-
-.status-processing {
-  background-color: #b6d8f2;
-  border-color: #0586e9 !important;
-}
-
-.status-error {
-  background-color: #f1bfbf;
-  border-color: #eb0606 !important;
-}
-
-.status-failure {
-  background-color: #f7dd80;
-  border-color: #f4c004 !important;
-}
-
-.status-completed {
-  background-color: #eaf4ea;
-  border-color: #08ed08 !important;
 }
 
 .smooth {

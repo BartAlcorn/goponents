@@ -1,0 +1,76 @@
+.status-pending {
+  background-color: #f7f2f2;
+}
+.status-pending-icon {
+  background-image: url("/static/svgs/pending.svg");
+  background-repeat: no-repeat;
+  height: 24px;
+  margin-left: 4px;
+  padding-left: 28px;
+  stroke-width: 4;
+  width: 24px;
+}
+
+.status-processing {
+  background-color: #b6d8f2;
+  border-color: #0586e9 !important;
+}
+.status-processing-icon {
+  background-image: url("/static/svgs/processing.svg");
+  background-repeat: no-repeat;
+  height: 24px;
+  margin-left: 4px;
+  padding-left: 28px;
+  stroke-width: 4;
+  width: 24px;
+}
+
+.status-error {
+  background-color: #f1bfbf;
+  border-color: #eb0606 !important;
+}
+.status-error-icon {
+  background-image: url("/static/svgs/error.svg");
+  background-repeat: no-repeat;
+  height: 24px;
+  margin-left: 4px;
+  padding-left: 28px;
+  stroke-width: 4;
+  width: 24px;
+}
+
+.status-error-icon:hover {
+  background-image: url("/static/svgs/error-filled.svg");
+}
+
+.status-failure {
+  background-color: #f7dd80;
+  border-color: #f4c004 !important;
+}
+.status-failure-icon {
+  background-image: url("/static/svgs/failure.svg");
+  background-repeat: no-repeat;
+  height: 24px;
+  margin-left: 4px;
+  padding-left: 28px;
+  stroke-width: 4;
+  width: 24px;
+}
+
+.status-failure-icon:hover {
+  background-image: url("/static/svgs/failure-filled.svg");
+}
+
+.status-completed {
+  background-color: #eaf4ea;
+  border-color: #08ed08 !important;
+}
+.status-completed-icon {
+  background-image: url("/static/svgs/completed.svg");
+  background-repeat: no-repeat;
+  height: 24px;
+  margin-left: 4px;
+  padding-left: 28px;
+  stroke-width: 4;
+  width: 24px;
+}

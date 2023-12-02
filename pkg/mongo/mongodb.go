@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/bartalcorn/goponents/pkg/styles"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -54,7 +55,7 @@ func connectToMongo(name string, url string) error {
 		log.Println("PING FAILURE", err)
 	}
 
-	fmt.Printf("Connected to %s MongoDB!\n", name)
+	fmt.Println(styles.StartBlockTop.Render(fmt.Sprintf("Connected to %s MongoDB", name)))
 	clients[name] = client
 
 	return err

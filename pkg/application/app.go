@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/bartalcorn/goponents/pkg/styles"
 	"github.com/labstack/gommon/color"
 )
 
@@ -33,15 +34,8 @@ func (a *AppConfig) Start(ctx context.Context) error {
 		Handler: a.router,
 	}
 	url := fmt.Sprintf("http://localhost:%v", a.config.ServerPort)
-	color.Println(color.Green("==========================================="))
-	color.Println(color.Green("|                                         |"))
-	color.Println(color.Green("| GOponents starting...                   |"))
-	color.Print(color.Green("| Available at : "))
-	color.Print(color.Green(color.Underline(url)))
-	color.Println(color.Green("    |"))
-	color.Println(color.Green("|                                         |"))
-	color.Println(color.Green("==========================================="))
-
+	fmt.Println(styles.StartBlockTop.Render(fmt.Sprintf("GOponents starting...")))
+	fmt.Println(styles.StartBlockBottom.Render("Available at :", color.Yellow(color.Underline(url))))
 	ch := make(chan error, 1)
 
 	go func() {

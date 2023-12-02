@@ -1,9 +1,11 @@
 {
   "recommendations": [
+    "aaron-bond.better-comments",
     "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
     "golang.go",
     "maracko.json-to-go",
     "mikestead.dotenv",
-    "v4run.gotimeformat",
+    "v4run.gotimeformat"
   ]
-}
+} 

@@ -30,7 +30,5 @@ func SSERespond(item any, t string, block string, event string) (string, error) 
 	sb.WriteString(fmt.Sprintf("event: %s\n", event))
 	sb.WriteString(fmt.Sprintf("data: %v\n\n", sanitized))
 
-	fmt.Println(sb.String())
-
 	return sb.String(), nil
 }

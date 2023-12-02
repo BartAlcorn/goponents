@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Awesome go-echarts</title>
+  <script src="https://go-echarts.github.io/go-echarts-assets/assets/echarts.min.js"></script>
+</head>
+
+<body>
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    max-width: 600px;
+  }
+
+  .item {
+    margin: auto;
+  }
+</style>
+<div class="container">
+  <div class="item" id="MuxTKNRyPQMT" style="width:900px;height:500px;"></div>
+</div>
+
+<script type="text/javascript">
+  "use strict"
+  let goecharts_MuxTKNRyPQMT = echarts.init(document.getElementById('MuxTKNRyPQMT'), "white")
+  let option_MuxTKNRyPQMT = { "animation": true, "color": ["#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de", "#3ba272", "#fc8452", "#9a60b4", "#ea7ccc"], "legend": { "show": true, "type": "", "top": "bottom" }, "series": [{ "name": "pie", "type": "pie", "smooth": false, "connectNulls": false, "showSymbol": false, "waveAnimation": false, "renderLabelForZeroData": false, "selectedMode": true, "animation": true, "data": [{ "name": "Processing", "value": 56 }, { "name": "Completed", "value": 12 }, { "name": "Failure ", "value": 63, }, { "name": "Error", "value": 23 }] }], "title": { "text": "basic pie example" }, "tooltip": { "show": true } }
+  let action_MuxTKNRyPQMT = { "areas": {}, "type": "" }
+  goecharts_MuxTKNRyPQMT.setOption(option_MuxTKNRyPQMT)
+  goecharts_MuxTKNRyPQMT.dispatchAction(action_MuxTKNRyPQMT)
+  goecharts_MuxTKNRyPQMT.on('click', function (params) {
+    window.open('http://localhost:3000/')
+  });
+</script>
+
+</body>
+</html>

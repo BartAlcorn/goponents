@@ -10,6 +10,7 @@ require (
 	github.com/go-chi/chi/v5 v5.0.10
 	github.com/go-chi/cors v1.2.1
 	github.com/google/uuid v1.4.0
+	github.com/kylelemons/godebug v1.1.0
 	github.com/labstack/gommon v0.4.1
 	github.com/paganotoni/tailo v1.0.2
 	go.mongodb.org/mongo-driver v1.13.0

@@ -13,7 +13,7 @@ func HandleMain(w http.ResponseWriter, r *http.Request) {
 	state.State.Module = "min"
 
 	if htmx.IsHTMX(r) {
-		htmx.Respond(w, r, nil, "pkg/minSse/tmpls/*.gohtml", "main")
+		htmx.Respond(w, r, nil, "pkg/minsse/tmpls/*.gohtml", "main")
 
 	} else {
 		index.Index(w, r)

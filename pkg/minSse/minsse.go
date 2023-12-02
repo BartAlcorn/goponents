@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+
+	"github.com/bartalcorn/goponents/pkg/htmx"
 )
 
 func Simulate(w http.ResponseWriter, r *http.Request) {
@@ -32,7 +34,7 @@ func Simulate(w http.ResponseWriter, r *http.Request) {
 	for updateEvent := range updateCh {
 		updateEvent.Counts = Stats["counts"]
 		updateEvent.Metrics = Stats["metrics"]
-		event, err := formatReturn("min-event-update", updateEvent, "assets")
+		event, err := htmx.SSERespond(updateEvent, "pkg/minsse/tmpls/*.gohtml", "assets", "min-event-update")
 		if err != nil {
 			fmt.Println(err)
 			break

@@ -10,7 +10,7 @@ import (
 )
 
 func HandleStart(w http.ResponseWriter, r *http.Request) {
-	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/minSse/tmpls/*.gohtml")
+	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/minsse/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsin template formatAsset", err)
 	}
@@ -23,7 +23,7 @@ func HandleStart(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleStop(w http.ResponseWriter, r *http.Request) {
-	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/minSse/tmpls/*.gohtml")
+	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/minsse/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsin template formatAsset", err)
 	}
@@ -36,7 +36,7 @@ func HandleStop(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleDetails(w http.ResponseWriter, r *http.Request) {
-	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/minSse/tmpls/*.gohtml")
+	t, err := template.New("details.gohtml").Funcs(sprig.FuncMap()).ParseGlob("pkg/minsse/tmpls/*.gohtml")
 	if err != nil {
 		fmt.Println("error parsin template formatAsset", err)
 	}

@@ -11,6 +11,9 @@ func removeAsset(i int) {
 	Assets = append(Assets[:i], Assets[i+1:]...)
 }
 
+// generateAssets responds to a ticker, periodically
+// creating an Update to an existing Asset
+// and pushes the update onto the updateCh channel
 func generateUpdates(ctx context.Context, updateCh chan<- Asset) {
 	ticker := time.NewTicker(500 * time.Millisecond)
 	// color.Println(color.Green("generateUpdates: started"))

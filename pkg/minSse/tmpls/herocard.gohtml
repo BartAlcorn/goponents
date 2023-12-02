@@ -1,34 +1,44 @@
 {{block "herocard" .}}
 <div id="herocard-{{.Name}}" class="herocard" hx-swap-oob="true">
-  <div class="herotitle" style="margin-bottom: 12px;">{{.Name | title}}: {{.Total}}</div>
-    <div>
-      <table class="w-full">
-        <tr class="status-error">
-          <td>Errors:</td>
-          <td style="text-align: right">{{ .Errors }}</td>
-          <td style="text-align: right">{{ .ErrorP }}%</td>
-        </tr>
-        <tr class="status-failure">
-          <td>Failures:</td>
-          <td style="text-align: right">{{ .Failures }}</td>
-          <td style="text-align: right">{{ .FailureP }}%</td>
-        </tr>
-        <tr class="status-processing">
-          <td>Processing:</td>
-          <td style="text-align: right">{{ .Processings }}</td>
-          <td style="text-align: right">{{ .ProcessingP }}%</td>
-        </tr>
-        <tr class="status-pending">
-          <td>Pending:</td>
-          <td style="text-align: right">{{ .Pendings }}</td>
-          <td style="text-align: right">{{ .PendingP }}%</td>
-        </tr>
-        <tr class="status-completed">
-          <td>Completed:</td>
-          <td style="text-align: right">{{ .Completeds }}</td>
-          <td style="text-align: right">{{ .CompletedP }}%</td>
-        </tr>
-      </table>
+  <div class="herotitle" style="margin-bottom: 12px">
+    {{.Name | title}}: {{.Total}}
+  </div>
+  <div>
+    <table class="w-full">
+      <tr>
+        <td style="min-width: 150px;"><div class="status-error-icon mr-2">Errors:</div></td>
+        <td style="text-align: right;">{{ .Errors }}</td>
+        <td style="text-align: right;">{{ .ErrorP }}</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="status-failure-icon mr-2">Failures:</div>
+        </td>
+        <td style="text-align: right;">{{ .Failures }}</td>
+        <td style="text-align: right;">{{ .FailureP }}</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="status-processing-icon mr-2">Processing:</div>
+        </td>
+        <td style="text-align: right;">{{ .Processings }}</td>
+        <td style="text-align: right;">{{ .ProcessingP }}</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="status-pending-icon mr-2">Pending:</div>
+        </td>
+        <td style="text-align: right;">{{ .Pendings }}</td>
+        <td style="text-align: right;">{{ .PendingP }}</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="status-completed-icon mr-2">Completed</div>
+        </td>
+        <td style="text-align: right;">{{ .Completeds }}</td>
+        <td style="text-align: right;">{{ .CompletedP }}</td>
+      </tr>
+    </table>
   </div>
 </div>
 {{ end }}

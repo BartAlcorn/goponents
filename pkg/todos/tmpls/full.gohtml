@@ -1,0 +1,15 @@
+{{define "full"}}
+<!doctype html>
+<html id="html-main" data-theme="discolight">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>ToDos</title>
+    {{template "scripts"}}
+    <link href="static/goponents.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    {{- template "main" . -}}
+  </body>
+</html>
+{{ end }}

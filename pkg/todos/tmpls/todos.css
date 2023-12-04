@@ -1,0 +1,35 @@
+.todo-item {
+  border-radius: 8px;
+  display: flex;
+  margin-bottom: 4px;
+  min-width: 100%;
+  padding: 2px;
+  opacity: 0;
+}
+
+.todo-item:hover {
+  background-color: #f9f9ff;
+}
+
+.todo-item-done {
+  align-items: center;
+  height: 24px;
+  padding-left: 4px;
+  padding-top: 2px;
+  margin-right: 4px;
+  width: 24px;
+}
+
+.delete-svg {
+  fill: none;
+  max-height: 20px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5px;
+  color: #888 !important;
+}
+
+.delete-svg:hover {
+  stroke-width: 2px;
+  color: #f00 !important;
+}

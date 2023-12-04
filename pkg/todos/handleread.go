@@ -17,5 +17,5 @@ func Read(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error getting all", err)
 	}
 
-	htmx.Respond(w, r, i, "pkg/todos/tmpls/*.gohtml", "grid")
+	htmx.Respond(w, r, i, "pkg/todos/tmpls/*.gohtml", "main")
 }

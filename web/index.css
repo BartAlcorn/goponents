@@ -1,5 +1,6 @@
 @import "./status.css";
 @import "../pkg/minsse/tmpls/component.css";
+@import "../pkg/todos/tmpls/todos.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,19 +13,6 @@ h1 {
 
 mainmodule {
   width: 100%;
-}
-
-.deleteSVG {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5px;
-  stroke: #888 !important;
-}
-
-.deleteSVG:hover {
-  stroke-width: 2px;
-  stroke: #f00 !important;
 }
 
 .smooth {
